@@ -27,4 +27,11 @@ ssize_t check_l(char *str);
 ssize_t check_t(char *str);
 ssize_t check_z(char *str);
 
+typedef struct  t_termino
+{
+    char    width;
+    char    height;
+    char    **arr;
+}
+
 #endif
