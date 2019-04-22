@@ -63,7 +63,7 @@ int		main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	ret = read(fd, buf, BUFF_SIZE);
 	if (ret < 1)
-		return (error(1, "error\n"));
+		return (message(1, "error\n"));
 	buf[ret] = '\0';
 	ret = (ret + 1) / 21;
 	if (fd == -1 || !size_validation(buf) || !validation(buf, ret))
