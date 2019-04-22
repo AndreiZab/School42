@@ -69,10 +69,8 @@ int		main(int argc, char **argv)
 		return (error(1, "error\n"));
 	buf[ret] = '\0';
 	ret = (ret + 1) / 21;
-	if (fd == -1 || ret < 1 || !size_validation(buf) || !validation(buf, ret))
+	if (fd == -1 || !size_validation(buf) || !validation(buf, ret))
 		return (error(1, "error\n"));
-//	fillit(fd, buf);
 	close(fd);
-	printf("VALID");
 	return (0);
 }
