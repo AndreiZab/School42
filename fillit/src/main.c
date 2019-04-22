@@ -69,6 +69,6 @@ int		main(int argc, char **argv)
 	}
 //	fillit(fd, buf);
 	close(fd);
-	printf("VALID Eсли Тетри разделены несколькими ньюлайнами - валид?");
+	printf("VALID");
 	return (0);
 }
