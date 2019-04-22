@@ -46,7 +46,7 @@ int		size_validation(char *str)
 	return (0);
 }
 
-int		error(int ret, char *str)
+int		message(int ret, char *str)
 {
 	ft_putstr(str);
 	return (ret);
@@ -59,10 +59,7 @@ int		main(int argc, char **argv)
 	char	buf[BUFF_SIZE + 1];
 
 	if (argc != 2)
-	{
-		write(1, "usage: fillit source_file\n", 26);
-		return (0);
-	}
+		return (message(0, "usage: fillit source_file\n"));
 	fd = open(argv[1], O_RDONLY);
 	ret = read(fd, buf, BUFF_SIZE);
 	if (ret < 1)
@@ -70,7 +67,7 @@ int		main(int argc, char **argv)
 	buf[ret] = '\0';
 	ret = (ret + 1) / 21;
 	if (fd == -1 || !size_validation(buf) || !validation(buf, ret))
-		return (error(1, "error\n"));
+		return (message(1, "error\n"));
 	close(fd);
 	return (0);
 }
