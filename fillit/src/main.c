@@ -35,7 +35,7 @@ int		size_validation(char *str)
 			hash++;
 		else if (str[i] == '.')
 			dot++;
-		else if (str[i] != '#' && str[i] != '.' && str[i] != '\n')
+		else if (str[i] != '\n')
 			return (0);
 		i++;
 	}
