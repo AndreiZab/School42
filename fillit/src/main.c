@@ -46,6 +46,12 @@ int		size_validation(char *str)
 	return (0);
 }
 
+int		error(int ret, char *str)
+{
+	ft_putstr(str);
+	return (ret);
+}
+
 int		main(int argc, char **argv)
 {
 	int		fd;
@@ -62,11 +68,7 @@ int		main(int argc, char **argv)
 	buf[ret] = '\0';
 	ret = (ret + 1) / 21;
 	if (fd == -1 || ret < 1 || !size_validation(buf) || !validation(buf, ret))
-	{
-		printf("\nresult validation: %d\n", validation(buf, ret));
-		write(1, "error\n", 6);
-		return (0);
-	}
+		return (error(1, "error\n"));
 //	fillit(fd, buf);
 	close(fd);
 	printf("VALID Eсли Тетри разделены несколькими ньюлайнами - валид?");
