@@ -20,7 +20,7 @@ int		validation(char *str, ssize_t ret)
 	return (0);
 }
 
-int		size_validation(char *str)
+int		size_validation(char *s)
 {
 	int i;
 	int hash;
@@ -29,13 +29,13 @@ int		size_validation(char *str)
 	i = 0;
 	hash = 0;
 	dot = 0;
-	while (str[i])
+	while (s[i])
 	{
-		if (str[i] == '#')
+		if (s[i] == '#')
 			hash++;
-		else if (str[i] == '.')
+		else if (s[i] == '.')
 			dot++;
-		else if (str[i] != '\n')
+		else if (s[i] != '\n' || (s[i] == '\n' && s[i + 1] == '\n'))
 			return (0);
 		i++;
 	}
