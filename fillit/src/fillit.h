@@ -32,6 +32,6 @@ typedef struct  t_termino
     char    width;
     char    height;
     char    **arr;
-}
+}               s_termino;
 
 #endif
