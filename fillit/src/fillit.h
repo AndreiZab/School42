@@ -25,11 +25,11 @@ int     connect_validation(char *str);
 int     ft_read(int fd, char *buf);
 int     size_validation(char *s);
 
-typedef struct	t_termino
+typedef struct	s_termino
 {
 	char	width;
 	char	height;
 	char	**arr;
-}				s_termino;
+}				t_termino;
 
 #endif
