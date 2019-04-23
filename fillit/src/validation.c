@@ -44,7 +44,7 @@ int		ft_read(int fd, char *buf)
 	while ((i = read(fd, buf, 21)) >= 20)
 	{
 		buf[i] = '\0';
-		if (!connect_validation(buf) || !size_validation(buf))
+		if (!size_validation(buf) || !connect_validation(buf))
 			return (-1);
 		//test
 		show_termino(parse_termino(buf));
