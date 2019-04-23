@@ -6,12 +6,14 @@
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:25:28 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/04/21 18:05:13 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/23 18:52:36 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+<<<<<<< HEAD
+=======
 int		validation(char *str, ssize_t ret)
 {
 	if ((check_g(str) + check_l(str) + check_z(str) + check_t(str) +
@@ -46,6 +48,7 @@ int		size_validation(char *s)
 	return (0);
 }
 
+>>>>>>> db9ff127e387dc3464814f782011612ff639eb11
 int		message(int ret, char *str)
 {
 	ft_putstr(str);
@@ -56,18 +59,22 @@ int		main(int argc, char **argv)
 {
 	int		fd;
 	ssize_t	ret;
-	char	buf[BUFF_SIZE + 1];
+	char	buf[22];
 
 	if (argc != 2)
 		return (message(0, "usage: fillit source_file\n"));
 	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf, BUFF_SIZE);
-	if (ret < 1)
+	ret = ft_read(fd, buf);
+	if (ret < 0)
+	{
 		return (message(1, "error\n"));
-	buf[ret] = '\0';
-	ret = (ret + 1) / 21;
-	if (fd == -1 || !size_validation(buf) || !validation(buf, ret))
+	}
+	if (fd == -1 || !size_validation(buf) || !connect_validation(buf))
+	{
+		printf("%d", size_validation(buf));
+		printf("%d", connect_validation(buf));
 		return (message(1, "error\n"));
+	}
 	close(fd);
 	return (0);
 }
