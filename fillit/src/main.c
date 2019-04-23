@@ -12,43 +12,6 @@
 
 #include "fillit.h"
 
-<<<<<<< HEAD
-=======
-int		validation(char *str, ssize_t ret)
-{
-	if ((check_g(str) + check_l(str) + check_z(str) + check_t(str) +
-				check_line_cube(str)) == ret)
-		return (1);
-	return (0);
-}
-
-int		size_validation(char *s)
-{
-	int i;
-	int hash;
-	int dot;
-
-	i = 0;
-	hash = 0;
-	dot = 0;
-	while (s[i])
-	{
-		if (s[i] == '#')
-			hash++;
-		else if (s[i] == '.')
-			dot++;
-		else if (s[i] != '\n')
-			return (0);
-		i++;
-	}
-	if ((i + 1) > 546)
-		return (0);
-	if (((hash % 4) == 0) && ((dot % 12) == 0) && (((i + 1) % 21) == 0))
-		return (1);
-	return (0);
-}
-
->>>>>>> db9ff127e387dc3464814f782011612ff639eb11
 int		message(int ret, char *str)
 {
 	ft_putstr(str);
