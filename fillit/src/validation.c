@@ -40,13 +40,14 @@ int		connect_validation(char *str)
 int		ft_read(int fd, char *buf)
 {
 	ssize_t		i;
-	ssize_t		j;
 	
 	while ((i = read(fd, buf, 21)) >= 20)
 	{
 		buf[i] = '\0';
 		if (!connect_validation(buf) || !size_validation(buf))
 			return (-1);
+		//test
+		show_termino(parse_termino(buf));
 	}
 	return (i);
 }

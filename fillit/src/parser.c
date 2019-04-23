@@ -22,7 +22,7 @@ char        **get_arr(char *s, char ox, char oy, char w, char  h)
     while (y < h)
     {
         arr[y] = (char*)malloc(w);
-        ft_memcpy(arr[y], s + y * 5 + ox, w);
+        ft_memcpy(arr[y], s + (y + oy) * 5 + ox, w);
         ++y;
     }
     return (arr);
@@ -36,6 +36,8 @@ t_termino   *parse_termino(char *str)
 
     elem = (t_termino*)malloc(sizeof(t_termino));
     pos = ft_strnew(3);
+    pos[0] = 5;
+    pos[1] = 5;
     i = 0;
     while (str[i])
     {
@@ -54,6 +56,29 @@ t_termino   *parse_termino(char *str)
     }
     elem->width = pos[2] - pos[0] + 1;
     elem->height = pos[3] - pos[1] + 1;
-    elem->arr = get_arr(s, pos[0], pos[1], elem->width, elem->height);
+    elem->arr = get_arr(str, pos[0], pos[1], elem->width, elem->height);
     return (elem);
+}
+
+#include <stdio.h>
+
+void    show_termino(t_termino *elem)
+{
+    int y;
+    int x;
+
+    y = 0;
+    printf("W: %d, H: %d\n", (int)elem->width, (int)elem->height);
+    while (y < elem->height)
+    {
+        x = 0;
+        while (x < elem->width)
+        {
+            ft_putchar(elem->arr[y][x]);
+            ++x;
+        }
+        ft_putchar('\n');
+        ++y;
+    }
+    ft_putchar('\n');
 }

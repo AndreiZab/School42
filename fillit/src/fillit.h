@@ -32,4 +32,7 @@ typedef struct	s_termino
 	char	**arr;
 }				t_termino;
 
+t_termino   *parse_termino(char *str);
+void    show_termino(t_termino *elem);
+
 #endif
