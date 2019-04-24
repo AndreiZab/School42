@@ -32,6 +32,13 @@ typedef struct	s_termino
 	char	**arr;
 }				t_termino;
 
+typedef struct s_map
+{
+	char size;
+	char **arr;
+	t_termino **best;
+}				t_map;
+
 t_termino   *parse_termino(char *str);
 void    show_termino(t_termino *elem);
 
