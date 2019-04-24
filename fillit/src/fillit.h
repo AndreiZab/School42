@@ -32,6 +32,7 @@ typedef struct	s_termino
 	char	**arr;
 	char	x;
 	char	y;
+	char	used;
 }				t_termino;
 
 typedef struct s_map
