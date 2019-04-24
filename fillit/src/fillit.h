@@ -30,12 +30,15 @@ typedef struct	s_termino
 	char	width;
 	char	height;
 	char	**arr;
+	char	x;
+	char	y;
 }				t_termino;
 
 typedef struct s_map
 {
 	char size;
 	char **arr;
+	char term_count;
 	t_termino **best;
 }				t_map;
 
