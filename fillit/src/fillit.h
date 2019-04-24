@@ -18,7 +18,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "../includes/Libft/libft.h"
+# include "libft.h"
 # define BUFF_SIZE 1024
 
 int     connect_validation(char *str);
@@ -45,5 +45,6 @@ typedef struct s_map
 
 t_termino   *parse_termino(char *str);
 void    show_termino(t_termino *elem);
+void	solver(t_termino **terms, int count);
 
 #endif

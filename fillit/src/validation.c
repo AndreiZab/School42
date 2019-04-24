@@ -40,15 +40,22 @@ int		connect_validation(char *str)
 int		ft_read(int fd, char *buf)
 {
 	ssize_t		i;
-	
+	int count;
+	t_termino **terms;
+	terms = (t_termino**)malloc(sizeof(t_termino*) * 26);
+	count = 0;
+	while (count < 26)
+		terms[count++] = (t_termino*)malloc(sizeof(t_termino));
+	count = 0;
 	while ((i = read(fd, buf, 21)) >= 20)
 	{
 		buf[i] = '\0';
 		if (!size_validation(buf) || !connect_validation(buf))
 			return (-1);
 		//test
-		show_termino(parse_termino(buf));
+		terms[count++] = parse_termino(buf);
 	}
+	solver(terms, count);
 	return (i);
 }
 

@@ -1,5 +1,5 @@
 
-
+#include "libft.h"
 #include "fillit.h"
 
 //Примерный алгоритм.
@@ -181,12 +181,15 @@ void    map_showbest(t_map *map, t_termino **terms, int count)
 {
     int x;
     int y;
+    int i;
 
-    while (--count)
+    i = 0;
+    while (i < count)
     {
-        terms[count]->x = map->best[count]->x;
-        terms[count]->y = map->best[count]->y;
-        map_place_a(map, terms[count], count);
+        terms[i]->x = map->best[i]->x;
+        terms[i]->y = map->best[i]->y;
+        map_place_a(map, terms[i], i);
+        ++i;
     }
     y = 0;
     while (y < map->size)
