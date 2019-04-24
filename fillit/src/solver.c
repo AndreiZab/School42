@@ -7,8 +7,8 @@
 
 char    can_place(t_map *map, t_termino *term)
 {
-    char y;
-    char x;
+    int y;
+    int x;
 
     if (term->x + term->width >= map->size || term->y + term->height >= map->size)
         return (0);
@@ -29,8 +29,8 @@ char    can_place(t_map *map, t_termino *term)
 
 void    map_place(t_map *map, t_termino *term)
 {
-    char y;
-    char x;
+    int y;
+    int x;
 
     y = 0;
     while (y < term->height)
@@ -48,8 +48,8 @@ void    map_place(t_map *map, t_termino *term)
 
 void    map_place_a(t_map *map, t_termino *term, char num)
 {
-    char y;
-    char x;
+    int y;
+    int x;
 
     y = 0;
     while (y < term->height)
@@ -67,8 +67,8 @@ void    map_place_a(t_map *map, t_termino *term, char num)
 
 void    map_remove(t_map *map, t_termino *term)
 {
-    char y;
-    char x;
+    int y;
+    int x;
 
     y = 0;
     while (y < term->height)
@@ -84,11 +84,11 @@ void    map_remove(t_map *map, t_termino *term)
     }
 }
 
-char    map_calsize(t_termino **terms, char count)
+char    map_calcsize(t_termino **terms, char count)
 {
     char size_x;
     char size_y;
-    char i;
+    int i;
 
     size_x = 0;
     size_y = 0;
@@ -101,6 +101,8 @@ char    map_calsize(t_termino **terms, char count)
             size_y = terms[i]->y + terms[i]->height;
         ++i;
     }
+    size_x = (size_x > size_y) ? size_x : size_y;
+    return (size_x);
 }
 
 void    map_best(t_map *map, t_termino **figures, int count)
@@ -116,13 +118,12 @@ void    map_best(t_map *map, t_termino **figures, int count)
 void    solve(t_map *map, t_termino **figures, int count, int depth)
 {
     int term_i;
-    int pos[2]; //0 - y, 1 - x
     int this_size;
 
     if (depth == 0) //or == 1
     {
-        this_size = map_calcsize(map);
-        if (this_size < map->)
+        this_size = map_calcsize(figures, count);
+        if (this_size < map->size)
         {
             map_best(map, figures, count);
             map->size = this_size;
@@ -144,7 +145,7 @@ void    solve(t_map *map, t_termino **figures, int count, int depth)
                     if (can_place(map, figures[term_i]))
                     {
                         map_place(map, figures[term_i]);
-                        solve(map, figs, count, depth - 1);
+                        solve(map, figures, count, depth - 1);
                         map_remove(map, figures[term_i]);
                     }
                     ++figures[term_i]->x;
@@ -157,29 +158,29 @@ void    solve(t_map *map, t_termino **figures, int count, int depth)
     }
 }
 
-t_map   *map_new(char term_count)
+t_map   *map_new(int term_count)
 {
     t_map   *map;
-    char    i;
+    int   i;
 
     map = (t_map*)malloc(sizeof(t_map));
     map->term_count = term_count;
     map->best = (t_termino**)malloc(sizeof(t_termino*) * term_count);
     while (term_count--)
-        map->best = (t_termino*)malloc(sizeof(t_termino));
+        map->best[term_count] = (t_termino*)malloc(sizeof(t_termino));
     map->size = 13;
     map->arr = (char**)malloc(sizeof(char*) * map->size);
     i = 0;
     while (i < map->size)
-        arr[i++] = ft_strnew(map->size - 1);
+        map->arr[i++] = ft_strnew(map->size - 1);
     return (map);
     
 }
 
-void    map_showbest(t_map *map, t_termino **terms, char count)
+void    map_showbest(t_map *map, t_termino **terms, int count)
 {
-    char x;
-    char y;
+    int x;
+    int y;
 
     while (--count)
     {
@@ -202,11 +203,11 @@ void    map_showbest(t_map *map, t_termino **terms, char count)
         
 }
 
-void solver(t_termino **terms, char count)
+void solver(t_termino **terms, int count)
 {
     t_map *map;
 
     map = map_new(count);
     solve(map, terms, count, count);
-    map_showbest(map, count);
+    map_showbest(map, terms, count);
 }
