@@ -6,7 +6,7 @@
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 11:37:27 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/04/23 18:09:40 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/25 15:19:28 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@
 # include "libft.h"
 # define BUFF_SIZE 1024
 
-int     connect_validation(char *str);
-int     ft_read(int fd, char *buf);
-int     size_validation(char *s);
+int     ft_read(int fd);
+int     validation(char *s);
 
 typedef struct	s_termino
 {

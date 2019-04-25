@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solver.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/25 17:42:02 by rhealitt          #+#    #+#             */
+/*   Updated: 2019/04/25 18:34:23 by rhealitt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
@@ -118,6 +129,8 @@ void    map_best(t_map *map, t_termino **figures, int count)
     }
 }
 
+int ticks = 0;
+
 //оптимальный размер карты изначально - 13x13
 //optimization mark
 //адаптивный размер?
@@ -152,6 +165,7 @@ void    solve(t_map *map, t_termino **figures, int count, int depth)
                     {
                         map_place(map, figures[term_i]);
                         solve(map, figures, count, depth - 1);
+						++ticks;
                         map_remove(map, figures[term_i]);
                     }
                     ++figures[term_i]->x;
@@ -178,7 +192,7 @@ t_map   *map_new(int term_count)
     map->arr = (char**)malloc(sizeof(char*) * map->size);
     i = 0;
     while (i < map->size)
-        map->arr[i++] = ft_strnew(map->size - 1);
+        map->arr[i++] = ft_memalloc(map->size);
     return (map);
     
 }
@@ -212,6 +226,8 @@ void    map_showbest(t_map *map, t_termino **terms, int count)
         
 }
 
+#include <stdio.h>
+
 void solver(t_termino **terms, int count)
 {
     t_map *map;
@@ -219,4 +235,5 @@ void solver(t_termino **terms, int count)
     map = map_new(count);
     solve(map, terms, count, count);
     map_showbest(map, terms, count);
+	printf("Ticks: %d\n", ticks);
 }

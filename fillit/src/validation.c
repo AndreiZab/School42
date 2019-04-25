@@ -6,61 +6,27 @@
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:01:27 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/04/23 18:52:38 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/25 18:21:09 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-//optimization mark
-//concat connect and size validation?
-
-int		connect_validation(char *str)
-{
-	int hash;
-	int i;
-
-	hash = 0;
-	i = 0;
-	while (i < 20)
-	{
-		if (str[i] == '#')
-		{
-			//optimization mark
-			//compare if's
-			if ((i + 1) < 20 && str[i + 1] == '#')
-				hash++;
-			if ((i - 1) >= 0 && str[i - 1] == '#')
-				hash++;
-			if ((i + 5) < 20 && str[i + 5] == '#')
-				hash++;
-			if ((i - 5) >= 0 && str[i - 5] == '#')
-				hash++;
-		}
-		i++;
-	}
-	return (hash == 6 || hash == 8);
-}
-
-//optimization mark
 //read must return terms, count, error
 //transfer main logic in main
 //like int(error) ft_read(int fd, t_termino ***terms, int *count)
-//Почему в ft_read передается buf?
-int		ft_read(int fd, char *buf)
+int		ft_read(int fd)
 {
-	ssize_t		i;
+	int		i;
 	int count;
 	t_termino **terms;
+	char    buf[22];
+
 	terms = (t_termino**)malloc(sizeof(t_termino*) * 26);
-	count = 0;
-	while (count < 26)
-		terms[count++] = (t_termino*)malloc(sizeof(t_termino));
 	count = 0;
 	while ((i = read(fd, buf, 21)) >= 20)
 	{
 		buf[i] = '\0';
-		if (!size_validation(buf) || !connect_validation(buf))
+		if (count >= 26 || !validation(buf))
 			return (-1);
 		//test
 		terms[count++] = parse_termino(buf);
@@ -69,36 +35,32 @@ int		ft_read(int fd, char *buf)
 	return (i);
 }
 
-int		size_validation(char *s)
+int		validation(char *s)
 {
-	int i;
+	int j;
+	int side;
 	int hash;
-	int dot;
 
-	i = 0;
+	j = -1;
 	hash = 0;
-	dot = 0;
-	while (s[i])
+	side = 0;
+	while (s[++j])
 	{
-		//optimization mark
-		//Каждый пятый должен быть \n. Все остальные - # или .
-		//Считать только hash
-		if (s[i] == '#')
-			hash++;
-		else if (s[i] == '.')
-			dot++;
-		else if (s[i] != '\n')
+		if (s[j] == '#' && (j + 1) % 5 != 0)
 		{
-			return (0);
+			if ((j + 1) < 20 && s[j + 1] == '#')
+				side++;
+			if ((j - 1) >= 0 && s[j - 1] == '#')
+				side++;
+			if ((j + 5) < 20 && s[j + 5] == '#')
+				side++;
+			if ((j - 5) >= 0 && s[j - 5] == '#')
+				side++;
+			hash++;
 		}
-		if ((i + 1) % 5 == 0 && i != 0)
-			if (s[i] != '\n')
-				return(0);
-		i++;
+		else if (((j + 1) % 5 == 0 && j != 0 && s[j] != '\n') ||
+				(s[j] != '.' && (j + 1) % 5 != 0 && j != 20))
+			return(0);
 	}
-	//optimization mark
-	//return (hash == 4 && ...)
-	if (hash == 4 && dot == 12 && (i == 21 || i == 20))
-		return (1);
-	return (0);
+	return (hash == 4 && (j == 21 || j == 20) && (side == 6 || side == 8));
 }
