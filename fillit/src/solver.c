@@ -25,6 +25,7 @@ char    can_place(t_map *map, t_termino *term)
     if (term->x + term->width >= map->size || term->y + term->height >= map->size)
         return (0);
     y = 0;
+    //Нет столкновений
     while (y < term->height)
     {
         x = 0;
@@ -36,7 +37,31 @@ char    can_place(t_map *map, t_termino *term)
         }
         ++y;
     }
-    return (1);
+    //Прилегает к левому верхнему углу
+    if ((term->y == 0 && term->x < 6) || (term->x == 0 && term->y < 6))
+        return (1);
+    //Есть соприкосновения
+    y = 0;
+    if (term->x != 0)
+    {
+        while (y < term->height)
+        {
+            if (map->arr[term->x - 1][term->y + y] == '#')
+                return (1);
+            ++y;
+        }
+    }
+    x = 0;
+    if (term->y != 0)
+    {
+        while (x < term->width)
+        {
+            if (map->arr[term->x + x][term->y - 1] == '#')
+                return (1);
+            ++x;
+        }
+    }
+    return (0);
 }
 
 void    map_place(t_map *map, t_termino *term)
