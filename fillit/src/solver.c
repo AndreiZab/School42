@@ -9,7 +9,8 @@ char    can_place(t_map *map, t_termino *term)
 {
     int y;
     int x;
-
+    //optimization mark
+    //termy, termx
     if (term->x + term->width >= map->size || term->y + term->height >= map->size)
         return (0);
     y = 0;
@@ -31,7 +32,8 @@ void    map_place(t_map *map, t_termino *term)
 {
     int y;
     int x;
-
+    //optimization mark
+    //termy, termx
     y = 0;
     while (y < term->height)
     {
@@ -50,7 +52,8 @@ void    map_place_a(t_map *map, t_termino *term, char num)
 {
     int y;
     int x;
-
+    //optimization mark
+    //termy, termx
     y = 0;
     while (y < term->height)
     {
@@ -69,7 +72,8 @@ void    map_remove(t_map *map, t_termino *term)
 {
     int y;
     int x;
-
+    //optimization mark
+    //termy, termx
     y = 0;
     while (y < term->height)
     {
@@ -115,6 +119,8 @@ void    map_best(t_map *map, t_termino **figures, int count)
 }
 
 //оптимальный размер карты изначально - 13x13
+//optimization mark
+//адаптивный размер?
 void    solve(t_map *map, t_termino **figures, int count, int depth)
 {
     int term_i;
