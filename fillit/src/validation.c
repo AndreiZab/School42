@@ -12,6 +12,9 @@
 
 #include "fillit.h"
 
+//optimization mark
+//concat connect and size validation?
+
 int		connect_validation(char *str)
 {
 	int hash;
@@ -36,6 +39,10 @@ int		connect_validation(char *str)
 	}
 	return (hash == 6 || hash == 8);
 }
+
+//optimization mark
+//read must return terms, count, error
+//transfer main logic in main
 
 int		ft_read(int fd, char *buf)
 {
