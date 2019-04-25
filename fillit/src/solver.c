@@ -217,7 +217,10 @@ t_map   *map_new(int term_count)
     map->arr = (char**)malloc(sizeof(char*) * map->size);
     i = 0;
     while (i < map->size)
-        map->arr[i++] = ft_memalloc(map->size);
+    {
+        map->arr[i] = ft_memalloc(map->size);
+        ft_memset(map->arr[i++], '.', map->size);
+    }  
     return (map);
     
 }
