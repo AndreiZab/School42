@@ -26,6 +26,8 @@ int		connect_validation(char *str)
 	{
 		if (str[i] == '#')
 		{
+			//optimization mark
+			//compare if's
 			if ((i + 1) < 20 && str[i + 1] == '#')
 				hash++;
 			if ((i - 1) >= 0 && str[i - 1] == '#')
@@ -43,7 +45,8 @@ int		connect_validation(char *str)
 //optimization mark
 //read must return terms, count, error
 //transfer main logic in main
-
+//like int(error) ft_read(int fd, t_termino ***terms, int *count)
+//Почему в ft_read передается buf?
 int		ft_read(int fd, char *buf)
 {
 	ssize_t		i;
@@ -77,6 +80,9 @@ int		size_validation(char *s)
 	dot = 0;
 	while (s[i])
 	{
+		//optimization mark
+		//Каждый пятый должен быть \n. Все остальные - # или .
+		//Считать только hash
 		if (s[i] == '#')
 			hash++;
 		else if (s[i] == '.')
@@ -90,6 +96,8 @@ int		size_validation(char *s)
 				return(0);
 		i++;
 	}
+	//optimization mark
+	//return (hash == 4 && ...)
 	if (hash == 4 && dot == 12 && (i == 21 || i == 20))
 		return (1);
 	return (0);
