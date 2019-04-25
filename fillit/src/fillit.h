@@ -47,4 +47,7 @@ t_termino   *parse_termino(char *str);
 void    show_termino(t_termino *elem);
 void	solver(t_termino **terms, int count);
 
+//optimization mark
+//struct t_point
+
 #endif
