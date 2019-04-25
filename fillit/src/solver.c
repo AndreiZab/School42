@@ -6,7 +6,7 @@
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 17:42:02 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/04/25 18:34:23 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/25 20:33:06 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ t_map   *map_new(int term_count)
 {
     t_map   *map;
     int   i;
+	int	  j;
 
     map = (t_map*)malloc(sizeof(t_map));
     map->term_count = term_count;
@@ -192,7 +193,13 @@ t_map   *map_new(int term_count)
     map->arr = (char**)malloc(sizeof(char*) * map->size);
     i = 0;
     while (i < map->size)
-        map->arr[i++] = ft_memalloc(map->size);
+	{
+        map->arr[i] = ft_memalloc(map->size);
+		j = 0;
+		while (j < map->size)
+			map->arr[i][j++] = '.';
+		++i;
+	}
     return (map);
     
 }
@@ -235,5 +242,5 @@ void solver(t_termino **terms, int count)
     map = map_new(count);
     solve(map, terms, count, count);
     map_showbest(map, terms, count);
-	printf("Ticks: %d\n", ticks);
+//	printf("Ticks: %d\n", ticks);
 }

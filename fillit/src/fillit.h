@@ -6,7 +6,7 @@
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 11:37:27 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/04/25 15:19:28 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/25 19:02:23 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 # include "libft.h"
 # define BUFF_SIZE 1024
 
-int     ft_read(int fd);
-int     validation(char *s);
+int		validation(char *s);
 
 typedef struct	s_termino
 {
@@ -33,6 +32,8 @@ typedef struct	s_termino
 	char	y;
 	char	used;
 }				t_termino;
+
+int		ft_read(int fd, t_termino ***terms, int *count);
 
 typedef struct s_map
 {

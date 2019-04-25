@@ -6,32 +6,26 @@
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:01:27 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/04/25 18:21:09 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/25 20:46:53 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-//read must return terms, count, error
-//transfer main logic in main
-//like int(error) ft_read(int fd, t_termino ***terms, int *count)
-int		ft_read(int fd)
+ 
+int		ft_read(int fd, t_termino ***terms, int *count)
 {
 	int		i;
-	int count;
-	t_termino **terms;
 	char    buf[22];
 
-	terms = (t_termino**)malloc(sizeof(t_termino*) * 26);
-	count = 0;
 	while ((i = read(fd, buf, 21)) >= 20)
 	{
 		buf[i] = '\0';
-		if (count >= 26 || !validation(buf))
+		if (*count >= 26 || !validation(buf))
 			return (-1);
-		//test
-		terms[count++] = parse_termino(buf);
+		(*terms)[(*count)++] = parse_termino(buf);
 	}
-	solver(terms, count);
+	if (i == 21)
+		return (-1);
 	return (i);
 }
 
