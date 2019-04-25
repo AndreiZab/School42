@@ -13,10 +13,8 @@
 int		ft_sqrt(int nb)
 {
 	int i;
-	int sqrt;
 
 	i = 1;
-	sqrt = 1;
 	if (nb < 0 || nb == 0)
 	{
 		return (0);
