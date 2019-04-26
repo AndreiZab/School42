@@ -224,7 +224,7 @@ void solver(t_termino **terms, int count)
     t_map *map;
 
     map = map_new(count);
-    map->size = ft_sqrt_plus(count);
+    map->size = 2 * ft_sqrt_plus(count);
     while (solve(map, terms, count, 0) == 0)
         map->size += 1;
     map->size -= 1;
