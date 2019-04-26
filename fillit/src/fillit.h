@@ -47,6 +47,8 @@ t_termino   *parse_termino(char *str);
 void    show_termino(t_termino *elem);
 void	solver(t_termino **terms, int count);
 
+int		ft_sqrt_plus(int nb);
+
 //optimization mark
 //struct t_point
 
