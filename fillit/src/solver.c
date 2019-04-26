@@ -25,6 +25,7 @@ char    can_place(t_map *map, t_termino *term)
     if (term->x + term->width >= map->size || term->y + term->height >= map->size)
         return (0);
     y = 0;
+    //Нет столкновений
     while (y < term->height)
     {
         x = 0;
@@ -134,48 +135,34 @@ int ticks = 0;
 //оптимальный размер карты изначально - 13x13
 //optimization mark
 //адаптивный размер?
-void    solve(t_map *map, t_termino **figures, int count, int depth)
+int    solve(t_map *map, t_termino **figures, int count, int term_i)
 {
-    int term_i;
-    int this_size;
+    //int this_size;
 
-    if (depth == 0) //or == 1
+    if (term_i == count) //or == 1
     {
-        this_size = map_calcsize(figures, count);
-        if (this_size < map->size)
-        {
-            map_best(map, figures, count);
-            map->size = this_size;
-        }
-        return ;
+        map_best(map, figures, count);
+        return (1);
     }
-    term_i = 0;
-    while (term_i < count)
+    figures[term_i]->y = 0;
+    while (figures[term_i]->y < map->size - figures[term_i]->height + 1)
     {
-        if (figures[term_i]->used == 0)
+        figures[term_i]->x = 0;
+        while (figures[term_i]->x < map->size - figures[term_i]->width + 1)
         {
-            figures[term_i]->used = 1;
-            figures[term_i]->y = 0;
-            while (figures[term_i]->y < map->size - figures[term_i]->height + 1)
+            if (can_place(map, figures[term_i]))
             {
-                figures[term_i]->x = 0;
-                while (figures[term_i]->x < map->size - figures[term_i]->width + 1)
-                {
-                    if (can_place(map, figures[term_i]))
-                    {
-                        map_place(map, figures[term_i]);
-                        solve(map, figures, count, depth - 1);
-						++ticks;
-                        map_remove(map, figures[term_i]);
-                    }
-                    ++figures[term_i]->x;
-                }
-                ++figures[term_i]->y;
+                map_place(map, figures[term_i]);
+                if (solve(map, figures, count, term_i + 1) == 1)
+                    return (1);
+                ++ticks;
+                map_remove(map, figures[term_i]);
             }
-            figures[term_i]->used = 0;
+            ++figures[term_i]->x;
         }
-        ++term_i;
+        ++figures[term_i]->y;
     }
+    return (0);
 }
 
 t_map   *map_new(int term_count)
@@ -193,6 +180,7 @@ t_map   *map_new(int term_count)
     map->arr = (char**)malloc(sizeof(char*) * map->size);
     i = 0;
     while (i < map->size)
+<<<<<<< HEAD
 	{
         map->arr[i] = ft_memalloc(map->size);
 		j = 0;
@@ -200,6 +188,13 @@ t_map   *map_new(int term_count)
 			map->arr[i][j++] = '.';
 		++i;
 	}
+=======
+    {
+        map->arr[i] = ft_memalloc(map->size);
+        ft_memset(map->arr[i++], '.', map->size);
+    }
+        
+>>>>>>> 7be5f783c2305a61a438d8e49fc2477ac66f63d6
     return (map);
     
 }
@@ -240,7 +235,14 @@ void solver(t_termino **terms, int count)
     t_map *map;
 
     map = map_new(count);
-    solve(map, terms, count, count);
+    map->size = 5;
+    while (solve(map, terms, count, 0) == 0)
+        map->size += 1;
+    map->size -= 1;
     map_showbest(map, terms, count);
+<<<<<<< HEAD
 //	printf("Ticks: %d\n", ticks);
+=======
+	//printf("Ticks: %d\n", ticks);
+>>>>>>> 7be5f783c2305a61a438d8e49fc2477ac66f63d6
 }
