@@ -6,7 +6,7 @@
 /*   By: larlyne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 19:36:16 by larlyne           #+#    #+#             */
-/*   Updated: 2019/04/25 18:39:28 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/23 19:36:26 by larlyne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_termino   *parse_termino(char *str)
     int i;
 
     elem = (t_termino*)malloc(sizeof(t_termino));
-    pos = ft_memalloc(4);
+    pos = ft_strnew(3);
     pos[0] = 5;
     pos[1] = 5;
     i = 0;

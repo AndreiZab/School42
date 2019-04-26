@@ -6,7 +6,7 @@
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 17:42:02 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/04/25 20:33:06 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/25 18:34:23 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,6 @@ t_map   *map_new(int term_count)
 {
     t_map   *map;
     int   i;
-	int	  j;
 
     map = (t_map*)malloc(sizeof(t_map));
     map->term_count = term_count;
@@ -180,21 +179,11 @@ t_map   *map_new(int term_count)
     map->arr = (char**)malloc(sizeof(char*) * map->size);
     i = 0;
     while (i < map->size)
-<<<<<<< HEAD
-	{
-        map->arr[i] = ft_memalloc(map->size);
-		j = 0;
-		while (j < map->size)
-			map->arr[i][j++] = '.';
-		++i;
-	}
-=======
     {
         map->arr[i] = ft_memalloc(map->size);
         ft_memset(map->arr[i++], '.', map->size);
     }
         
->>>>>>> 7be5f783c2305a61a438d8e49fc2477ac66f63d6
     return (map);
     
 }
@@ -240,9 +229,5 @@ void solver(t_termino **terms, int count)
         map->size += 1;
     map->size -= 1;
     map_showbest(map, terms, count);
-<<<<<<< HEAD
-//	printf("Ticks: %d\n", ticks);
-=======
 	//printf("Ticks: %d\n", ticks);
->>>>>>> 7be5f783c2305a61a438d8e49fc2477ac66f63d6
 }
