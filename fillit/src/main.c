@@ -6,7 +6,7 @@
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:25:28 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/04/25 20:52:28 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/26 12:52:28 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		main(int argc, char **argv)
 	ret = ft_read(fd, &terms, &count);
 	if (ret < 0 || (ret < 20 && ret > 0))
 		return (message(1, "error\n"));
-	cd solver(terms, count);
+	solver(terms, count);
 	close(fd);
 	return (0);
 }

@@ -6,12 +6,13 @@
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:01:27 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/04/25 20:46:53 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/26 13:00:58 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
- 
+#include <stdio.h>
+
 int		ft_read(int fd, t_termino ***terms, int *count)
 {
 	int		i;
@@ -24,7 +25,7 @@ int		ft_read(int fd, t_termino ***terms, int *count)
 			return (-1);
 		(*terms)[(*count)++] = parse_termino(buf);
 	}
-	if (i == 21)
+	if (buf[20] == '\n')
 		return (-1);
 	return (i);
 }
