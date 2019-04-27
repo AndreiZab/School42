@@ -31,14 +31,13 @@ char		**get_arr(char *s, char ox, char oy, t_termino *elem)
 t_termino	*parse_termino(char *str)
 {
 	t_termino	*elem;
-	char		*pos;
+	char		pos[4];
 	int			i;
 
 	if ((elem = (t_termino*)malloc(sizeof(t_termino))) == NULL)
 		return (NULL);
-	pos = ft_strnew(3);
-	pos[0] = 5;
-	pos[1] = 5;
+	ft_memset(pos, 5, 2);
+	ft_memset(pos + 2, 0, 2);
 	i = -1;
 	while (str[++i])
 		if (str[i] == '#')
@@ -55,6 +54,5 @@ t_termino	*parse_termino(char *str)
 	elem->width = pos[2] - pos[0] + 1;
 	elem->height = pos[3] - pos[1] + 1;
 	elem->arr = get_arr(str, pos[0], pos[1], elem);
-	free(pos);
 	return (elem);
 }
