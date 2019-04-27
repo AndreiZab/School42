@@ -6,22 +6,44 @@
 /*   By: larlyne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 19:36:16 by larlyne           #+#    #+#             */
-/*   Updated: 2019/04/23 19:36:26 by larlyne          ###   ########.fr       */
+/*   Updated: 2019/04/27 17:22:06 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+void		ft_free(char **str)
+{
+	int i;
+
+	if (str == NULL)
+		return ;
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		str[i] = NULL;
+		i++;
+	}
+	free(str);
+	str = NULL;
+}
 
 char		**get_arr(char *s, char ox, char oy, t_termino *elem)
 {
 	char	**arr;
 	int		y;
 
-	arr = (char**)malloc(sizeof(char*) * elem->height);
+	if ((arr = (char**)malloc(sizeof(char*) * elem->height)) == NULL)
+		return (NULL);
 	y = 0;
 	while (y < elem->height)
 	{
-		arr[y] = (char*)malloc(elem->width);
+		if ((arr[y] = (char*)malloc(elem->width)) == NULL)
+		{
+			ft_free(arr);
+			return (NULL);
+		}
 		ft_memcpy(arr[y], s + (y + oy) * 5 + ox, elem->width);
 		++y;
 	}

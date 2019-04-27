@@ -6,7 +6,7 @@
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 17:42:02 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/04/27 09:34:26 by larlyne          ###   ########.fr       */
+/*   Updated: 2019/04/27 17:22:28 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,19 @@ t_map	*map_new(void)
 	t_map	*map;
 	int		i;
 
-	map = (t_map*)malloc(sizeof(t_map));
+	if ((map = (t_map*)malloc(sizeof(t_map))) == NULL)
+		return (NULL);
 	map->size = 13;
-	map->arr = (char**)malloc(sizeof(char*) * map->size);
+	if ((map->arr = (char**)malloc(sizeof(char*) * map->size)) == NULL)
+		return (NULL);
 	i = 0;
 	while (i < map->size)
 	{
-		map->arr[i] = ft_memalloc(map->size);
+		if ((map->arr[i] = ft_memalloc(map->size)) == NULL)
+		{
+			ft_free(map->arr);
+			return (NULL);
+		}
 		ft_memset(map->arr[i++], '.', map->size);
 	}
 	return (map);
@@ -104,7 +110,7 @@ void	solver(t_termino **terms, int count)
 	t_map *map;
 
 	map = map_new();
-	map->size = ft_sqrt_plus(count * 4) - 1;
+	map->size = ft_sqrt_plus(count * 4);
 	while (solve(map, terms, count, 0) == 0)
 		map->size += 1;
 	map->size -= 1;

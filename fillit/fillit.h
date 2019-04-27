@@ -6,7 +6,7 @@
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 11:37:27 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/04/26 13:28:49 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/27 17:08:10 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define BUFF_SIZE 1024
 
 int				validation(char *s);
+void			ft_free(char **str);
 
 typedef struct	s_termino
 {
