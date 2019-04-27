@@ -54,5 +54,6 @@ t_termino	*parse_termino(char *str)
 	elem->width = pos[2] - pos[0] + 1;
 	elem->height = pos[3] - pos[1] + 1;
 	elem->arr = get_arr(str, pos[0], pos[1], elem);
+	free(pos);
 	return (elem);
 }
