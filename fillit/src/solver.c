@@ -142,7 +142,6 @@ int		solve(t_map *map, t_termino **figures, int count, int term_i)
 				map_place(map, figures[term_i]);
 				if (solve(map, figures, count, term_i + 1) == 1)
 					return (1);
-				++ticks;
 				map_remove(map, figures[term_i]);
 			}
 			++figures[term_i]->x;
