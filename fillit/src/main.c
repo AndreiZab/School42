@@ -1,4 +1,4 @@
-/* ************************************************************************* */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
@@ -20,17 +20,17 @@ int		message(int ret, char *str)
 
 int		main(int argc, char **argv)
 {
-	int		fd;
-	ssize_t	ret;
-	t_termino **terms;
-	int count;
+	int			fd;
+	ssize_t		ret;
+	t_termino	**terms;
+	int			count;
 
 	terms = (t_termino**)malloc(sizeof(t_termino*) * 26);
 	count = 0;
 	if (argc != 2)
 		return (message(0, "usage: fillit source_file\n"));
 	fd = open(argv[1], O_RDONLY);
- 	if (fd == -1)
+	if (fd == -1)
 		return (message(1, "error\n"));
 	ret = ft_read(fd, &terms, &count);
 	if (ret < 0 || (ret < 20 && ret > 0))
