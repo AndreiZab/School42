@@ -34,7 +34,8 @@ t_termino	*parse_termino(char *str)
 	char		*pos;
 	int			i;
 
-	elem = (t_termino*)malloc(sizeof(t_termino));
+	if ((elem = (t_termino*)malloc(sizeof(t_termino))) == NULL)
+		return (NULL);
 	pos = ft_strnew(3);
 	pos[0] = 5;
 	pos[1] = 5;

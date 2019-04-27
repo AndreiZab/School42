@@ -18,12 +18,14 @@ int		ft_read(int fd, t_termino ***terms, int *count)
 	char		buf[22];
 	t_termino	*curr;
 
+	ft_memset(buf, 0, 22);
 	while ((i = read(fd, buf, 21)) >= 20)
 	{
 		buf[i] = '\0';
 		if (*count >= 26 || !validation(buf))
 			return (-1);
-		curr = parse_termino(buf);
+		if ((curr = parse_termino(buf)) == NULL)
+			return (-1);
 		curr->symbol = 'A' + (*count);
 		(*terms)[(*count)++] = curr;
 	}

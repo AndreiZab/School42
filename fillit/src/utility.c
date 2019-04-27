@@ -56,16 +56,22 @@ void	map_del(t_map **map)
 	*map = NULL;
 }
 
-void	term_del(t_termino **term)
+void	terms_del(t_termino ***terms, int count)
 {
-	t_termino	*ptr;
+	t_termino	**ptrs;
 	int			i;
+	int			j;
 
-	ptr = *term;
+	ptrs = *terms;
 	i = 0;
-	while (i < ptr->height)
-		free(ptr->arr[i++]);
-	free(ptr->arr);
-	free(ptr);
-	*term = NULL;
+	while (i < count)
+	{
+		j = 0;
+		while (j < ptrs[i]->height)
+			free(ptrs[i]->arr[j++]);
+		free(ptrs[i]->arr);
+		free(ptrs[i++]);
+	}
+	free(ptrs);
+	*terms = NULL;
 }

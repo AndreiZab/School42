@@ -31,14 +31,16 @@ int		main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		return (message(1, "error\n"));
-	terms = (t_termino**)malloc(sizeof(t_termino*) * 26);
+	if ((terms = (t_termino**)malloc(sizeof(t_termino*) * 26)) == NULL)
+		return (message(1, "error\n"));
 	ret = ft_read(fd, &terms, &count);
 	if (ret < 0 || (ret < 20 && ret > 0))
+	{
+		terms_del(&terms, count);
 		return (message(1, "error\n"));
+	}
 	solver(terms, count);
-	while (count)
-		term_del(&(terms[--count]));
-	free(terms);
+	terms_del(&terms, count);
 	close(fd);
 	return (0);
 }
