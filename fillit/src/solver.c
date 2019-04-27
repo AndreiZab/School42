@@ -99,25 +99,6 @@ t_map	*map_new(void)
 	return (map);
 }
 
-void	map_show(t_map *map)
-{
-	int		x;
-	int		y;
-
-	y = 0;
-	while (y < map->size)
-	{
-		x = 0;
-		while (x < map->size)
-		{
-			ft_putchar(map->arr[y][x]);
-			++x;
-		}
-		++y;
-		ft_putchar('\n');
-	}
-}
-
 void	solver(t_termino **terms, int count)
 {
 	t_map *map;

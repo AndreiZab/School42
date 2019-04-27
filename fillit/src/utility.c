@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//  Округляет корень в большую сторону
+#include "fillit.h"
 
 int		ft_sqrt_plus(int nb)
 {
@@ -22,4 +22,22 @@ int		ft_sqrt_plus(int nb)
 	while (i * i < nb)
 		i = i + 1;
 	return (i);
+}
+
+void	ft_putnchar(char *str, int n)
+{
+	write(1, str, n);
+}
+
+void	map_show(t_map *map)
+{
+	int		y;
+
+	y = 0;
+	while (y < map->size)
+	{
+		ft_putnchar(map->arr[y], map->size);
+		ft_putchar('\n');
+		++y;
+	}
 }
