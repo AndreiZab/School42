@@ -37,7 +37,7 @@ int				ft_read(int fd, t_termino ***terms, int *count);
 
 typedef struct	s_map
 {
-	char	ize;
+	char	size;
 	char	**arr;
 }				t_map;
 
