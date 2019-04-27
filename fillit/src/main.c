@@ -36,6 +36,9 @@ int		main(int argc, char **argv)
 	if (ret < 0 || (ret < 20 && ret > 0))
 		return (message(1, "error\n"));
 	solver(terms, count);
+	while (count)
+		term_del(&(terms[--count]));
+	free(terms);
 	close(fd);
 	return (0);
 }

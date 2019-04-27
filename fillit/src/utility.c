@@ -55,3 +55,17 @@ void	map_del(t_map **map)
 	free(ptr);
 	*map = NULL;
 }
+
+void	term_del(t_termino **term)
+{
+	t_termino	*ptr;
+	int			i;
+
+	ptr = *term;
+	i = 0;
+	while (i < ptr->height)
+		free(ptr->arr[i++]);
+	free(ptr->arr);
+	free(ptr);
+	*term = NULL;
+}
