@@ -32,7 +32,7 @@ int		main(int argc, char **argv)
 	if (fd == -1)
 		return (message(1, "error\n"));
 	if ((terms = (t_termino**)malloc(sizeof(t_termino*) * 26)) == NULL)
-		exit();
+		exit(0);
 	ret = ft_read(fd, &terms, &count);
 	if (ret < 0 || (ret < 20 && ret > 0))
 	{
