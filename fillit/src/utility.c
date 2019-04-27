@@ -41,3 +41,17 @@ void	map_show(t_map *map)
 		++y;
 	}
 }
+
+void	map_del(t_map **map)
+{
+	t_map	*ptr;
+	int		i;
+
+	ptr = *map;
+	i = 0;
+	while (i < 13)
+		free(ptr->arr[i++]);
+	free(ptr->arr);
+	free(ptr);
+	*map = NULL;
+}

@@ -47,5 +47,6 @@ void			solver(t_termino **terms, int count);
 
 int				ft_sqrt_plus(int nb);
 void			map_show(t_map *map);
+void			map_del(t_map **map);
 
 #endif

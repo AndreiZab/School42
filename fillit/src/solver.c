@@ -109,4 +109,5 @@ void	solver(t_termino **terms, int count)
 		map->size += 1;
 	map->size -= 1;
 	map_show(map);
+	map_del(&map);
 }
