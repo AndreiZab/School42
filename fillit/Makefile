@@ -14,7 +14,7 @@ NAME = fillit
 
 LNAM = libft.a
 
-LIBF = ./includes/Libft
+LIBF = libft
 
 INCL = ./src/
 
