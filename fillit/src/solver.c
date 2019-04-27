@@ -100,15 +100,11 @@ t_map	*map_new(int term_count)
 	return (map);
 }
 
-void	map_show(t_map *map, t_termino **terms, int count)
+void	map_show(t_map *map)
 {
 	int		x;
 	int		y;
-	int		i;
 
-	i = 0;
-	while (i < count)
-		map_place_remove(map, terms[i++], 1);
 	y = 0;
 	while (y < map->size)
 	{
@@ -132,5 +128,5 @@ void	solver(t_termino **terms, int count)
 	while (solve(map, terms, count, 0) == 0)
 		map->size += 1;
 	map->size -= 1;
-	map_show(map, terms, count);
+	map_show(map);
 }
