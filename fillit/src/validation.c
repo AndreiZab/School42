@@ -11,12 +11,11 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-// #include <stdio.h>
 
 int		ft_read(int fd, t_termino ***terms, int *count)
 {
-	int		i;
-	char    buf[22];
+	int			i;
+	char		buf[22];
 	t_termino	*curr;
 
 	while ((i = read(fd, buf, 21)) >= 20)
@@ -28,7 +27,6 @@ int		ft_read(int fd, t_termino ***terms, int *count)
 		curr->symbol = 'A' + (*count);
 		(*terms)[(*count)++] = curr;
 	}
-//	printf("i: %d\nvalidation(buf): %d\n", i, validation(buf));
 	if (buf[20] == '\n' || !buf[0])
 		return (-1);
 	return (i);
@@ -36,15 +34,14 @@ int		ft_read(int fd, t_termino ***terms, int *count)
 
 int		validation(char *s)
 {
-	int j;
-	int side;
-	int hash;
+	int		j;
+	int		side;
+	int		hash;
 
 	j = -1;
 	hash = 0;
 	side = 0;
 	while (s[++j])
-	{
 		if (s[j] == '#' && (j + 1) % 5 != 0)
 		{
 			if ((j + 1) < 20 && s[j + 1] == '#')
@@ -59,7 +56,6 @@ int		validation(char *s)
 		}
 		else if (((j + 1) % 5 == 0 && j != 0 && s[j] != '\n') ||
 				(s[j] != '.' && (j + 1) % 5 != 0 && j != 20))
-			return(0);
-	}
+			return (0);
 	return (hash == 4 && (j == 21 || j == 20) && (side == 6 || side == 8));
 }
