@@ -21,7 +21,7 @@
 # include "libft.h"
 # define BUFF_SIZE 1024
 
-int     validation(char *s);
+int				validation(char *s);
 
 typedef struct	s_termino
 {
@@ -33,22 +33,19 @@ typedef struct	s_termino
 	char	symbol;
 }				t_termino;
 
-int     ft_read(int fd, t_termino ***terms, int *count);
+int				ft_read(int fd, t_termino ***terms, int *count);
 
-typedef struct s_map
+typedef struct	s_map
 {
-	char size;
-	char **arr;
+	char	ize;
+	char	**arr;
 }				t_map;
 
-t_termino   *parse_termino(char *str);
-void    show_termino(t_termino *elem);
-void	solver(t_termino **terms, int count);
+t_termino		*parse_termino(char *str);
+void			show_termino(t_termino *elem);
+void			solver(t_termino **terms, int count);
 
-int		ft_sqrt_plus(int nb);
-void	map_show(t_map *map);
-
-//optimization mark
-//struct t_point
+int				ft_sqrt_plus(int nb);
+void			map_show(t_map *map);
 
 #endif
