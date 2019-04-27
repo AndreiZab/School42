@@ -6,7 +6,7 @@
 /*   By: larlyne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 19:36:16 by larlyne           #+#    #+#             */
-/*   Updated: 2019/04/27 17:22:06 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/27 17:49:26 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ char		**get_arr(char *s, char ox, char oy, t_termino *elem)
 	int		y;
 
 	if ((arr = (char**)malloc(sizeof(char*) * elem->height)) == NULL)
-		return (NULL);
+		exit();
 	y = 0;
 	while (y < elem->height)
 	{
 		if ((arr[y] = (char*)malloc(elem->width)) == NULL)
 		{
 			ft_free(arr);
-			return (NULL);
+			exit();
 		}
 		ft_memcpy(arr[y], s + (y + oy) * 5 + ox, elem->width);
 		++y;
@@ -57,7 +57,7 @@ t_termino	*parse_termino(char *str)
 	int			i;
 
 	if ((elem = (t_termino*)malloc(sizeof(t_termino))) == NULL)
-		return (NULL);
+		exit();
 	ft_memset(pos, 5, 2);
 	ft_memset(pos + 2, 0, 2);
 	i = -1;

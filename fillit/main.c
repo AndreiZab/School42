@@ -6,7 +6,7 @@
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:25:28 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/04/27 14:24:36 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/27 17:51:45 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		main(int argc, char **argv)
 	if (fd == -1)
 		return (message(1, "error\n"));
 	if ((terms = (t_termino**)malloc(sizeof(t_termino*) * 26)) == NULL)
-		return (message(1, "error\n"));
+		exit();
 	ret = ft_read(fd, &terms, &count);
 	if (ret < 0 || (ret < 20 && ret > 0))
 	{

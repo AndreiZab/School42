@@ -6,7 +6,7 @@
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 17:42:02 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/04/27 17:22:28 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/27 17:51:16 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,17 @@ t_map	*map_new(void)
 	int		i;
 
 	if ((map = (t_map*)malloc(sizeof(t_map))) == NULL)
-		return (NULL);
+		exit();
 	map->size = 13;
 	if ((map->arr = (char**)malloc(sizeof(char*) * map->size)) == NULL)
-		return (NULL);
+		exit();
 	i = 0;
 	while (i < map->size)
 	{
 		if ((map->arr[i] = ft_memalloc(map->size)) == NULL)
 		{
 			ft_free(map->arr);
-			return (NULL);
+			exit();
 		}
 		ft_memset(map->arr[i++], '.', map->size);
 	}
