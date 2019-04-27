@@ -88,17 +88,17 @@ t_map	*map_new(void)
 	int		i;
 
 	if ((map = (t_map*)malloc(sizeof(t_map))) == NULL)
-		exit();
+		exit(0);
 	map->size = 13;
 	if ((map->arr = (char**)malloc(sizeof(char*) * map->size)) == NULL)
-		exit();
+		exit(0);
 	i = 0;
 	while (i < map->size)
 	{
 		if ((map->arr[i] = ft_memalloc(map->size)) == NULL)
 		{
 			ft_free(map->arr);
-			exit();
+			exit(0);
 		}
 		ft_memset(map->arr[i++], '.', map->size);
 	}
