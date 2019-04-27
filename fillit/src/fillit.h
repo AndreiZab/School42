@@ -30,7 +30,7 @@ typedef struct	s_termino
 	char	**arr;
 	char	x;
 	char	y;
-	char	used;
+	char	symbol;
 }				t_termino;
 
 int     ft_read(int fd, t_termino ***terms, int *count);
@@ -40,7 +40,6 @@ typedef struct s_map
 	char size;
 	char **arr;
 	char term_count;
-	t_termino **best;
 }				t_map;
 
 t_termino   *parse_termino(char *str);

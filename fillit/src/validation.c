@@ -17,13 +17,16 @@ int		ft_read(int fd, t_termino ***terms, int *count)
 {
 	int		i;
 	char    buf[22];
+	t_termino	*curr;
 
 	while ((i = read(fd, buf, 21)) >= 20)
 	{
 		buf[i] = '\0';
 		if (*count >= 26 || !validation(buf))
 			return (-1);
-		(*terms)[(*count)++] = parse_termino(buf);
+		curr = parse_termino(buf);
+		curr->symbol = 'A' + (*count);
+		(*terms)[(*count)++] = curr;
 	}
 //	printf("i: %d\nvalidation(buf): %d\n", i, validation(buf));
 	if (buf[20] == '\n' || !buf[0])
