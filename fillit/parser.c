@@ -35,14 +35,14 @@ char		**get_arr(char *s, char ox, char oy, t_termino *elem)
 	int		y;
 
 	if ((arr = (char**)malloc(sizeof(char*) * elem->height)) == NULL)
-		exit();
+		exit(0);
 	y = 0;
 	while (y < elem->height)
 	{
 		if ((arr[y] = (char*)malloc(elem->width)) == NULL)
 		{
 			ft_free(arr);
-			exit();
+			exit(0);
 		}
 		ft_memcpy(arr[y], s + (y + oy) * 5 + ox, elem->width);
 		++y;
@@ -57,7 +57,7 @@ t_termino	*parse_termino(char *str)
 	int			i;
 
 	if ((elem = (t_termino*)malloc(sizeof(t_termino))) == NULL)
-		exit();
+		exit(0);
 	ft_memset(pos, 5, 2);
 	ft_memset(pos + 2, 0, 2);
 	i = -1;
