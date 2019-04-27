@@ -82,13 +82,12 @@ int		solve(t_map *map, t_termino **figures, int count, int term_i)
 	return (0);
 }
 
-t_map	*map_new(int term_count)
+t_map	*map_new(void)
 {
 	t_map	*map;
 	int		i;
 
 	map = (t_map*)malloc(sizeof(t_map));
-	map->term_count = term_count;
 	map->size = 13;
 	map->arr = (char**)malloc(sizeof(char*) * map->size);
 	i = 0;
@@ -123,7 +122,7 @@ void	solver(t_termino **terms, int count)
 {
 	t_map *map;
 
-	map = map_new(count);
+	map = map_new();
 	map->size = ft_sqrt_plus(count * 4) - 1;
 	while (solve(map, terms, count, 0) == 0)
 		map->size += 1;

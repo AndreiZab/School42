@@ -39,7 +39,6 @@ typedef struct s_map
 {
 	char size;
 	char **arr;
-	char term_count;
 }				t_map;
 
 t_termino   *parse_termino(char *str);
