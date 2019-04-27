@@ -12,21 +12,19 @@
 
 NAME = fillit
 
-LNAM = libft.a
-
 LIBF = libft
 
-INCL = ./src/
+INCL = src/
 
-SRCS = ./src
+SRCS = src/main.c src/parser.c src/solver.c src/utility.c src/validation.c
 
-CCFL = gcc -Wall -Wextra -Werror
+CCFL = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME):
 	@make -C $(LIBF) re
-	@$(CCFL) -L $(LIBF)  $(SRCS)/*.c -I $(LIBF) -I $(INCL) -o $(NAME) -lft
+	@gcc $(CCFL) -L $(LIBF)  $(SRCS) -I $(LIBF) -I $(INCL) -o $(NAME) -lft
 
 clean:
 	@make -C $(LIBF) clean
