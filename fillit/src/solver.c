@@ -37,13 +37,13 @@ char	can_place(t_map *map, t_termino *term)
 	return (1);
 }
 
-void	map_place(t_map *map, t_termino *term)
+void	map_place_remove(t_map *map, t_termino *term, char place)
 {
 	int		y;
 	int		x;
 	char	symb;
 
-	symb = term->symbol;
+	symb = (place == 1) ? term->symbol : '.';
 	y = 0;
 	while (y < term->height)
 	{
@@ -58,31 +58,10 @@ void	map_place(t_map *map, t_termino *term)
 	}
 }
 
-void	map_remove(t_map *map, t_termino *term)
-{
-	int		y;
-	int		x;
-
-	y = 0;
-	while (y < term->height)
-	{
-		x = 0;
-		while (x < term->width)
-		{
-			if (term->arr[y][x] == '#')
-				map->arr[y + term->y][x + term->x] = '.';
-			++x;
-		}
-		++y;
-	}
-}
-
 int		solve(t_map *map, t_termino **figures, int count, int term_i)
 {
 	if (term_i == count)
-	{
 		return (1);
-	}
 	figures[term_i]->y = 0;
 	while (figures[term_i]->y < map->size - figures[term_i]->height + 1)
 	{
@@ -91,10 +70,10 @@ int		solve(t_map *map, t_termino **figures, int count, int term_i)
 		{
 			if (can_place(map, figures[term_i]))
 			{
-				map_place(map, figures[term_i]);
+				map_place_remove(map, figures[term_i], 1);
 				if (solve(map, figures, count, term_i + 1) == 1)
 					return (1);
-				map_remove(map, figures[term_i]);
+				map_place_remove(map, figures[term_i], 0);
 			}
 			++figures[term_i]->x;
 		}
@@ -129,7 +108,7 @@ void	map_show(t_map *map, t_termino **terms, int count)
 
 	i = 0;
 	while (i < count)
-		map_place(map, terms[i++]);
+		map_place_remove(map, terms[i++], 1);
 	y = 0;
 	while (y < map->size)
 	{
