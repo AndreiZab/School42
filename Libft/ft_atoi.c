@@ -15,8 +15,9 @@
 int		ft_atoi(const char *str)
 {
 	int		i;
-	long	num;
+	long	numb;
 	char	sign;
+	char	was_sign;
 
 	i = 0;
 	while (('\t' <= str[i] && str[i] <= '\r') || str[i] == ' ')
@@ -26,14 +27,15 @@ int		ft_atoi(const char *str)
 		sign = -1;
 	if (str[i] == '+' || str[i] == '-')
 		++i;
-	num = 0;
+	was_sign = sign;
+	numb = 0;
 	while ('0' <= str[i] && str[i] <= '9')
 	{
-		num = num * 10 + (str[i++] - '0');
-		if (num < 0 && sign == 1)
+		numb = numb * 10 + (str[i++] - '0');
+		if (numb < 0 && was_sign == 1)
 			return (-1);
-		else if (num < 0 && sign == -1)
+		else if (numb < 0 && was_sign == -1)
 			return (0);
 	}
-	return ((int)num * sign);
+	return ((int)numb * sign);
 }
