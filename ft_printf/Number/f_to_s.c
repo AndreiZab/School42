@@ -11,6 +11,83 @@
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
+
+int		ft_mod(long double nb, long double *mod)
+{
+	int len;
+
+	*mod = 1;
+	len = 1;
+	while ((int)(nb /= 10) != 0)
+	{
+		*mod *= 10;
+		len++;
+	}
+	if (nb < 0)
+		len++;
+	return (len);
+}
+
+char	*int_f_s(long double nb)
+{
+	char *s;
+	long double mod;
+	int i;
+
+
+	if (!(s = (char*)malloc(sizeof(char) * (ft_mod(nb, &mod) + 1))))
+		exit(1);
+	i = 0;
+	if ((long long)nb == 0)
+	{
+		s[0] = '0';
+		s[1] = '\0';
+		return (s);
+	}
+	if (nb < 0)
+	{
+		s[i++] = '-';
+		nb *= -1;
+	}
+	while ((long long)nb != 0)
+	{
+		s[i++] = (char)((nb / mod) + '0');
+		nb -= (int)(nb / mod) * mod;
+		mod /= 10;
+	}
+	return (s);
+}
+
+char	*decimal_f_s(long double nb, t_printf p, char *integer)
+{
+	int		i;
+	char	*s;
+	long double f;
+
+	nb = (nb < 0) ? -nb : nb;
+	f = 0;
+	if (integer[0] == '-')
+		integer++;
+	while (*integer != '\0')
+	{
+		f *= 10;
+		f += (long double)(*integer - '0');
+		integer++;
+	}
+	nb -= f;
+	i = 0;
+	if (!(s = (char*)malloc(sizeof(char) * (p.precision + 1))))
+		exit(1);
+	while (i < p.precision)
+	{
+		nb *= 10;
+		s[i++] = (nb > 0) ? (int)nb + '0' : '0';
+		nb -= (int)nb;
+	}
+	return (s);
+}
+
+/*
 #include <math.h>
 
 void	ft_int(long double *nb, char **str, int *i, long double mod)
@@ -112,4 +189,4 @@ int f_to_s(long double nb, char **str, t_printf p)
 	s[--i] = '\0';
 	*str = s;
 	return (len);
-}
+} */
