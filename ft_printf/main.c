@@ -12,7 +12,6 @@
 
 #include "ft_printf.h"
 #include <float.h>
-#include <math.h>
 
 #include <stdint.h>
 #include <unistd.h>
