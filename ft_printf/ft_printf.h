@@ -72,8 +72,16 @@ int			print_zero_padding(t_printf p, int char_printed);
 int			print_width_minus(t_printf p, int char_printed);
 int			print_precision(t_printf p, long long nb, int nb_len);
 
+int			len_f(long double nb);
+char		*decimal_f(long double nb, int p, char *integer_f);
+char		*integer_f(long double nb);
+long double	round_ld(long double nb, t_printf p);
+long double	ft_atof(char *s);
+int			ft_mod(long double nb, long double *mod);
+char		*decimal_f_s(long double nb, t_printf p, char *integer);
+char		*integer_f_s(long double nb, t_printf p);
+int			write_f(t_printf p, char *integer, char *decimal, long double nb);
 t_printf	flag_manager_f(long double nb, t_printf p);
-int			f_to_s(long double nb, char **str, t_printf p);
 size_t		ft_u_len_base(unsigned long long nb, char base);
 size_t		ft_u_longlong_len(unsigned long long nb);
 char		*ft_str_multi_chr(char *str, char *c);
@@ -86,7 +94,8 @@ void		ft_put_u_longlong_base(unsigned long long nb, char base);
 size_t		ft_ptr_len_base(size_t ptr, unsigned int base);
 void		ft_print_u_hex(unsigned long long nb, const char *str);
 
-
+void		ft_bzero(void *s, size_t n);
+void		*ft_memalloc(size_t size);
 int			ft_atoi(const char *str);
 void		*ft_memset(void *b, int c, size_t len);
 char		*ft_strchr(const char *s, int c);

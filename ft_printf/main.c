@@ -23,23 +23,23 @@
 #include <math.h>
 
 //#define ARG "|%#o|%#.o|%#o|%0o|%#.5o|%0.5o\"", 0U, 0U, 0U, 0U, 0U, 0U
-#define ARG "%-50.0F", NAN
+#define ARG "%.1f", 1.99
 
 int	main(void)
 {
 	double n = 0.0;
 	int a;
 	int b;
-	char *s = 0;
+	char s[10] = "Hello";
 
 	printf("My:\n");
 	a = ft_printf(ARG);
 
-	printf("\t\t\t\t\tres: %d\nOriginal:\n", a);
+	printf("\t\tres: %d\nOriginal:\n", a);
 
 	b = printf(ARG);
 
-	printf("\t\t\t\t\tres: %d\n", b);
+	printf("\t\tres: %d\n", b);
 	return (0);
 }
 
@@ -47,10 +47,9 @@ int	main(void)
 /*
 	  FAIL
 
-В %f можем совать unsigned?
-Округление
-Ширина
-Экстремумы
+Запилить округление
+Решить проблему сравнения 0,0 и -0,0 без сравнения битовой маски(ну или с ней :D)
+Фиксануть пермишен 0!
 
 "%#7hho|%-01.5hho", ULLONG_MAX, ULLONG_MAX
 "%#.3hho", 1234567

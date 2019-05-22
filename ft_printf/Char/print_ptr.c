@@ -33,8 +33,7 @@ int		print_ptr(int char_printed, va_list *arg, t_printf p)
 	int prec;
 
 	prec = 0;
-	ptr = va_arg(*arg,
-	void *);
+	ptr = va_arg(*arg, void *);
 	p_len = ft_ptr_len_base((size_t) ptr, 16);
 	if (!(p.precision == -1 && ptr == 0))
 		char_printed += p_len;

@@ -27,7 +27,9 @@ int			is_inf(long double nb)
 
 t_printf	flag_manager_f(long double nb, t_printf p)
 {
-	if (p.precision <= 0)
+	p.inf = 0;
+	p.nan = 0;
+	if (!p.precision)
 		p.precision = 6;
 	if (is_nan(nb) || is_inf(nb))
 	{
@@ -36,15 +38,11 @@ t_printf	flag_manager_f(long double nb, t_printf p)
 		 p.zero = 0;
 		 if (is_inf(nb))
 		 	p.inf = 1;
-		 else
-		 	p.inf = 0;
 		 if (is_nan(nb))
 		 {
 		 	p.plus = 0;
 		 	p.nan = 1;
 		 }
-		 else
-		 	p.nan = 0;
 	}
 	if (p.minus)
 		p.zero = 0;

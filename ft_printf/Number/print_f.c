@@ -15,20 +15,15 @@
 long double	ft_va_arg(va_list *arg, t_printf p)
 {
 	long double nb;
-	char c;
 
-	c = p.conversion;
-	if (c == 'f' || c == 'F')
-	{
-		if (p.L == 1)
-			nb = va_arg(*arg, long double);
-		else
-			nb = (long double) va_arg(*arg, double);
-	}
+	if (p.L == 1)
+		nb = va_arg(*arg, long double);
+	else
+		nb = (long double)va_arg(*arg, double);
 	return (nb);
 }
 
-int		ft_write_nan(t_printf p, char *s, char char_printed, long double nb)
+int			ft_write_nan(t_printf p, char *s, char char_printed, long double nb)
 {
 	int len;
 
@@ -42,38 +37,52 @@ int		ft_write_nan(t_printf p, char *s, char char_printed, long double nb)
 	return (char_printed);
 }
 
+int			ft_nun_inf(t_printf p, char char_printed, long double nb)
+{
+	char *s;
+
+	if (!(s = (char*)malloc(sizeof(char) * 4)))
+		exit (1);
+	if (p.conversion == 'F')
+		s = p.inf ? "INF" : "NAN";
+	else
+		s = p.inf ? "inf" : "nan";
+	char_printed += ft_write_nan(p, s, char_printed, nb);
+	s = NULL;
+	free (s);
+	return (char_printed);
+}
+
 int			print_f(va_list *arg, int char_printed, t_printf p)
 {
 	char *integer;
-	char *dec;
+	char *decimal;
 	long double nb;
-	char *s;
 
 	nb = ft_va_arg(arg, p);
 	p = flag_manager_f(nb, p);
 	if (!p.inf && !p.nan)
-	{/*
-		integer = int_f_s(nb, p);
-		dec = dec_f_s(nb, p);
-		char_printed += ft_write_f(p, integer, dec);*/
+	{
+		nb = round_ld(nb, p);
+		integer = integer_f(nb);
+		decimal = decimal_f(nb, p.precision, integer);
+//		integer = integer_f_s(nb, p);
+	//	printf("%s", integer);
+//		decimal = decimal_f_s(nb, p, integer);
+//		printf(".%s", decimal);
+		char_printed += write_f(p, integer, decimal, nb);
+		integer = NULL;
+		free(integer);
+		decimal = NULL;
+		free(decimal);
 	}
 	else
-	{
-		if (!(s = (char*)malloc(sizeof(char) * 4)))
-			exit (1);
-		if (p.conversion == 'F')
-			s = p.inf ? "INF" : "NAN";
-		else
-			s = p.inf ? "inf" : "nan";
-		char_printed += ft_write_nan(p, s, char_printed, nb);
-		s = NULL;
-		free (s);
-	}
+		char_printed += ft_nun_inf(p, char_printed, nb);
 //	char_printed += f_to_s(nb, &str, p);
 //	printf("%s", str);
 //	ft_write(str, char_printed, p);
 //	free(str);
-	return (char_printed);
+		return (char_printed);
 }
 
 		/*static void	ft_put_f_real(long long nbr)

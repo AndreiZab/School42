@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-
+/*
 int		ft_mod(long double nb, long double *mod)
 {
 	int len;
@@ -28,14 +28,15 @@ int		ft_mod(long double nb, long double *mod)
 	return (len);
 }
 
-char	*int_f_s(long double nb)
+char	*integer_f_s(long double nb, t_printf p)
 {
 	char *s;
 	long double mod;
 	int i;
+	int len;
 
-
-	if (!(s = (char*)malloc(sizeof(char) * (ft_mod(nb, &mod) + 1))))
+	len = ft_mod(nb, &mod);
+	if (!(s = (char*)malloc(sizeof(char) * (len + 1))))
 		exit(1);
 	i = 0;
 	if ((long long)nb == 0)
@@ -49,12 +50,13 @@ char	*int_f_s(long double nb)
 		s[i++] = '-';
 		nb *= -1;
 	}
-	while ((long long)nb != 0)
+	while (i < len)
 	{
 		s[i++] = (char)((nb / mod) + '0');
 		nb -= (int)(nb / mod) * mod;
 		mod /= 10;
 	}
+	s[i] = '\0';
 	return (s);
 }
 
@@ -81,10 +83,115 @@ char	*decimal_f_s(long double nb, t_printf p, char *integer)
 	while (i < p.precision)
 	{
 		nb *= 10;
-		s[i++] = (nb > 0) ? (int)nb + '0' : '0';
+		if (nb > 0)
+		{
+			if ((int)nb != 9)
+				s[i] = (int)(nb + 0.01) + '0';
+			else if ((int)(nb + 0.01) == 10)
+				s[i] = '0';
+			else
+				s[i] = (int)nb + '0';
+		}
+		else
+			s[i] = '0';
+		i++;
+	//	s[i++] = (nb > 0) ? (int)nb + '0' : '0';
+		nb -= (int)nb;
+	}
+	s[i] = '\0';
+	return (s);
+}
+*/
+void	print_f_longdouble(char *integer, char *decimal, long double nb)
+{
+	int i;
+
+	i = 0;
+	if (nb > 0 && integer[i] == '-')
+		i++;
+	while (integer[i])
+		write(1, &integer[i++], 1);
+	if (decimal[0] != '\0')
+		write(1, ".", 1);
+	i = 0;
+	while (decimal[i])
+		write(1, &decimal[i++], 1);
+}
+
+char		*integer_f(long double nb)
+{
+	char		*s;
+	char		*ptr;
+	int			len;
+	int			i;
+	long double	temp;
+
+	len = len_f(nb);
+	if (!(s = (char*)ft_memalloc(len + 1)))
+		exit (1);
+	ptr = s;
+	while (len)
+	{
+		i = len - 1;
+		temp = nb;
+		while (i--)
+			temp /= 10;
+		*ptr++ = (int)temp + '0';
+		temp = (int)temp;
+		while (++i < len - 1)
+			temp *= 10;
+		nb -= temp;
+		--len;
+	}
+	return (s);
+}
+
+char		*decimal_f(long double nb, int p, char *integer_f)
+{
+	char	*s;
+	int		i;
+
+	i = 0;
+	nb = nb < 0 ? -nb : nb;
+	nb -= ft_atof(integer_f);
+	if (!(s = (char *)ft_memalloc(p + 1)))
+		exit (1);
+	while (i < p)
+	{
+		nb *= 10;
+		if (nb > 0)
+			s[i] = (int)nb + '0';
+		else
+			s[i] = '0';
+		i++;
 		nb -= (int)nb;
 	}
 	return (s);
+}
+
+int 	write_f(t_printf p, char *integer, char *decimal, long double nb)
+{
+	int len;
+	int char_printed;
+
+	char_printed = 0;
+	len = ft_strlen(integer) + ft_strlen(decimal) + 1;
+	if (decimal[0] == '\0')
+		len--;
+	if ((p.plus || p.space) && nb >= 0)
+		char_printed += 1;
+	if (p.space && nb >= 0)
+		ft_putchar(' ');
+	char_printed += len;
+	char_printed += print_width(p, char_printed);
+	if (p.plus && nb >= 0)
+		ft_putchar('+');
+	if (nb < 0)
+		ft_putchar('-');
+	char_printed += print_zero_padding(p, char_printed);
+	print_f_longdouble(integer, decimal, nb);
+	char_printed += print_width_minus(p, char_printed);
+	return (char_printed);
 }
 
 /*
