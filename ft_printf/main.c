@@ -49,13 +49,13 @@ int	main(void)
 
 Запилить округление
 Решить проблему сравнения 0,0 и -0,0 без сравнения битовой маски(ну или с ней :D)
-Фиксануть пермишен 0!
+
 
 "%#7hho|%-01.5hho", ULLONG_MAX, ULLONG_MAX
 "%#.3hho", 1234567
 
 
-
+SOLVED Фиксануть пермишен 0!
 SOLVED zero padding printf("{%05.s}", 0)
 SOLVED 45 - 49  строки в print_di
 SOLVED minimum field-width AND precision with NULL   ft_printf("%.2s", s) && ft_printf("%20s", s);
