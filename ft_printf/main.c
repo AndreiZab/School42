@@ -31,14 +31,11 @@ int	main(void)
 	int b;
 	char s[10] = "Hello";
 
-	printf("My:\n");
-	a = ft_printf(ARG);
-
-	printf("\t\tres: %d\nOriginal:\n", a);
-
+	printf("Original:\n");
 	b = printf(ARG);
-
-	printf("\t\tres: %d\n", b);
+	printf("\t\tres: %d\nMy:\n", b);
+	a = ft_printf(ARG);
+	printf("\t\tres: %d\n", a);
 	return (0);
 }
 
