@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-int	print_x_longlong(int char_printed, t_printf p, unsigned long long nb)
+int	print_x_long(int char_printed, t_printf p, unsigned long long nb)
 {
 	int	prec;
 

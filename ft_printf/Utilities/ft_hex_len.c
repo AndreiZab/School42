@@ -17,7 +17,6 @@ int	ft_hex_len(unsigned long long nb)
 {
 	int char_printed;
 
-	char_printed = 0;
 	if (nb < 16)
 		char_printed = 1;
 	else

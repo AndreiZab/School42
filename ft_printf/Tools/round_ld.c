@@ -30,9 +30,9 @@ long double	ft_pow(int pow)
 	return (nb);
 }
 
-int		len_f(long double nb)
+int			len_f(long double nb)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (nb > 1)
@@ -54,15 +54,17 @@ long double	ft_atof(char *s)
 	{
 		nb *= 10;
 		nb += (long double)(*s - '0');
-		++s;
+		s++;
 	}
 	return (nb);
 }
 
-
 int			ft_even(char *str)
 {
-	return ((str[ft_strlen(str) - 1] - '0') % 2);
+	int i;
+
+	i = ((str[ft_strlen(str) - 1] - '0') % 2);
+	return (i);
 }
 
 long double	round_ld(long double nb, t_printf p)
@@ -70,6 +72,8 @@ long double	round_ld(long double nb, t_printf p)
 	long double	temp;
 	char		*integer_s;
 
+	if (p.precision == -1)
+		p.precision = 0;
 	nb = nb < 0 ? -nb : nb;
 	temp = nb * ft_pow(p.precision);
 	integer_s = integer_f(temp);

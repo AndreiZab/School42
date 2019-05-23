@@ -28,28 +28,18 @@ int	print_space(t_printf p, long long nb)
 int	print_hash(t_printf p, long long nb)
 {
 	char	c;
+	int		i;
 
+	i = ft_u_len_base(nb, 8);
 	c = p.conversion;
-	if (p.hash && ft_strchr("oO", c) && nb != 0 && ft_u_len_base(nb, 8) > p.precision)
-	{
-		ft_putchar('0');
-		return (1);
-	}
+	if (p.hash && ft_strchr("oO", c) && nb != 0 && i >= p.precision)
+		return (write(1, "0", 1));
 	if (p.hash && ft_strchr("oO", c) && p.precision == -1 && nb == 0)
-	{
-		ft_putchar('0');
-		return (1);
-	}
+		return (write(1, "0", 1));
 	else if (p.hash && c == 'x' && nb != 0)
-	{
-		ft_putstr("0x");
-		return (2);
-	}
+		return (write(1, "0x", 2));
 	else if (p.hash && c == 'X' && nb != 0)
-	{
-		ft_putstr("0X");
-		return (2);
-	}
+		return (write(1, "0X", 2));
 	return (0);
 }
 
@@ -64,7 +54,7 @@ int	hash_length(t_printf p, long long nb)
 	return (0);
 }
 
-int	print_plus(t_printf p,long long nb)
+int	print_plus(t_printf p, long long nb)
 {
 	if (p.plus && nb >= 0 && !ft_strchr("uU", p.conversion))
 	{

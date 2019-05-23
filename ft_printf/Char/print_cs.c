@@ -35,7 +35,7 @@ int		print_string(int char_printed, t_printf p, char *str)
 	if (str || prec != 0)
 	{
 		if (!str)
-			if ((str =(char*)malloc(sizeof(char) * 7)))
+			if ((str = (char*)malloc(sizeof(char) * 7)))
 				str = "(null)";
 		if (prec == 0 && ft_strlen(str) > 0)
 			char_printed += (int)ft_strlen(str);

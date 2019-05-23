@@ -25,8 +25,8 @@ t_printf	filling_p(char *format, int i)
 	p.minus = minus_flag(str);
 	p.zero = zero_flag(str, p.minus);
 	p.hash = hash_flag(str);
-	p.space = space_flag(str, p.minus, p.plus);
-	p.L = length(str, 'L');
+	p.space = space_flag(str, p.plus);
+	p.o = length(str, 'L');
 	p.l = length(str, 'l');
 	p.h = length(str, 'h');
 	p.j = length(str, 'j');

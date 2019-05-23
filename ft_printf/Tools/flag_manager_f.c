@@ -29,23 +29,23 @@ t_printf	flag_manager_f(long double nb, t_printf p)
 {
 	p.inf = 0;
 	p.nan = 0;
+	if (nb < 0)
+		p.plus = -1;
 	if (!p.precision)
 		p.precision = 6;
 	if (is_nan(nb) || is_inf(nb))
 	{
-		 p.precision = -1;
-		 p.hash = 0;
-		 p.zero = 0;
-		 if (is_inf(nb))
-		 	p.inf = 1;
-		 if (is_nan(nb))
-		 {
-		 	p.plus = 0;
-		 	p.nan = 1;
-		 }
-	}
-	if (p.minus)
+		p.precision = -1;
+		p.hash = 0;
 		p.zero = 0;
+		if (is_inf(nb))
+			p.inf = 1;
+		if (is_nan(nb))
+		{
+			p.plus = 0;
+			p.nan = 1;
+		}
+	}
 	if (p.plus)
 		p.space = 0;
 	return (p);

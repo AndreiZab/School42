@@ -17,15 +17,14 @@ int	zero_flag(char *str, int minus)
 	int		i;
 	char	*before;
 
-	int e;
-	int g;
 	i = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == '0' && !minus)
 		{
 			before = ft_strndup(str, i);
-			if (ft_str_multi_chr(before, "123456789") == NULL && !ft_strchr(before, '.'))
+			if (ft_str_multi_chr(before, "123456789") == NULL &&
+				!ft_strchr(before, '.'))
 			{
 				free(before);
 				return (1);
@@ -83,7 +82,7 @@ int	hash_flag(char *str)
 	return (0);
 }
 
-int	space_flag(char *str, int minus, int plus)
+int	space_flag(char *str, int plus)
 {
 	int i;
 

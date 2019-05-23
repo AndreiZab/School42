@@ -18,11 +18,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include <limits.h>
-# include <wchar.h>
-
-//test
-# include <stdio.h>
-//test
 
 typedef struct	s_printf
 {
@@ -35,11 +30,11 @@ typedef struct	s_printf
 	int			hash;
 	int			space;
 	int			l;
-	int			L;
+	int			o;
 	int			h;
 	int			j;
 	int			z;
-	int 		inf;
+	int			inf;
 	int			nan;
 }				t_printf;
 
@@ -50,8 +45,8 @@ int			print_f(va_list *arg, int char_printed, t_printf p);
 int			print_d_longlong(int char_written, t_printf p, long long nb);
 int			print_o_longlong(int char_written, t_printf p, long long nb);
 int			print_o_unsigned(va_list *arg, int char_written, t_printf p);
-int			print_u_longlong(int char_written, t_printf p, unsigned long long nb);
-int			print_x_longlong(int char_written, t_printf p, unsigned long long nb);
+int			print_u_long(int char_written, t_printf p, unsigned long long nb);
+int			print_x_long(int char_written, t_printf p, unsigned long long nb);
 int			width(char *str);
 int			precision(char *str);
 int			length(char *str, char c);
@@ -59,7 +54,7 @@ int			zero_flag(char *str, int minus);
 int			plus_flag(char *str);
 int			minus_flag(char *str);
 int			hash_flag(char *str);
-int			space_flag(char *str, int minus, int plus);
+int			space_flag(char *str, int plus);
 int			print_sc(va_list *arg, t_printf p);
 int			print_ptr(int char_printed, va_list *arg, t_printf p);
 int			print_simple_char(int char_printed, t_printf p);
@@ -73,13 +68,10 @@ int			print_width_minus(t_printf p, int char_printed);
 int			print_precision(t_printf p, long long nb, int nb_len);
 
 int			len_f(long double nb);
-char		*decimal_f(long double nb, int p, char *integer_f);
+char		*decimal_f(long double nb, t_printf p, char *integer_f);
 char		*integer_f(long double nb);
 long double	round_ld(long double nb, t_printf p);
 long double	ft_atof(char *s);
-int			ft_mod(long double nb, long double *mod);
-char		*decimal_f_s(long double nb, t_printf p, char *integer);
-char		*integer_f_s(long double nb, t_printf p);
 int			write_f(t_printf p, char *integer, char *decimal, long double nb);
 t_printf	flag_manager_f(long double nb, t_printf p);
 size_t		ft_u_len_base(unsigned long long nb, char base);

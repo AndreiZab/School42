@@ -11,19 +11,9 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <float.h>
-#include <math.h>
-
-#include <stdint.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <limits.h>
-#include <math.h>
 
 //#define ARG "|%#o|%#.o|%#o|%0o|%#.5o|%0.5o\"", 0U, 0U, 0U, 0U, 0U, 0U
-#define ARG "%.1f", 1.99
+#define ARG "%.20f", 1.18995
 
 int	main(void)
 {
@@ -32,14 +22,11 @@ int	main(void)
 	int b;
 	char s[10] = "Hello";
 
-	printf("My:\n");
-	a = ft_printf(ARG);
-
-	printf("\t\tres: %d\nOriginal:\n", a);
-
+	printf("Original:\n");
 	b = printf(ARG);
-
-	printf("\t\tres: %d\n", b);
+	printf("\t\tres: %d\nMy:\n", b);
+	a = ft_printf(ARG);
+	printf("\t\tres: %d\n", a);
 	return (0);
 }
 
@@ -47,15 +34,17 @@ int	main(void)
 /*
 	  FAIL
 
-Запилить округление
-Решить проблему сравнения 0,0 и -0,0 без сравнения битовой маски(ну или с ней :D)
-Фиксануть пермишен 0!
+??? Norme: ./ft_printf.h Error: global scope bad aligned
+SURRENDER фейл округления у 20х знаков
+??? SURRENDER Решить проблему сравнения 0,0 и -0,0 без сравнения битовой маски(ну или с ней :D)
+??? В файлу принт_ф s = "inf" или поэлементно
 
-"%#7hho|%-01.5hho", ULLONG_MAX, ULLONG_MAX
-"%#.3hho", 1234567
-
-
-
+SOLVED "%07.1f", -7.3
+SOLVED Зеро педдинг сломался с - шириной и точностью
+SOLVED Не верное окргугление .0 ввиду того, что p.p = -1
+SOLVED Фиксануть пермишен 0!
+SOLVED "%#7hho|%-01.5hho", ULLONG_MAX, ULLONG_MAX
+SOLVED "%#.3hho", 1234567
 SOLVED zero padding printf("{%05.s}", 0)
 SOLVED 45 - 49  строки в print_di
 SOLVED minimum field-width AND precision with NULL   ft_printf("%.2s", s) && ft_printf("%20s", s);

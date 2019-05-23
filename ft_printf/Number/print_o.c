@@ -23,10 +23,12 @@ int	print_u_o_longlong(int char_printed, t_printf p, unsigned long long nb)
 		char_printed += nb_len;
 	if (p.precision > 0)
 		prec = p.precision - nb_len;
-	if (p.hash == 1 && nb_len > p.precision)
+	if (p.hash == 1 && ((nb_len >= p.precision && nb != 0)
+		|| (p.precision == -1 && nb == 0)))
 		char_printed++;
 	char_printed += print_width(p, char_printed + (prec > 0 ? prec : 0));
-	if (p.hash == 1 && nb_len > p.precision)
+	if (p.hash == 1 && ((nb_len >= p.precision && nb != 0)
+		|| (p.precision == -1 && nb == 0)))
 		print_hash(p, nb);
 	char_printed += print_precision(p, nb, nb_len);
 	char_printed += print_zero_padding(p, char_printed);
@@ -68,7 +70,7 @@ int	print_o_longlong(int char_printed, t_printf p, long long nb)
 		char_printed += nb_len;
 	if (p.precision > 0)
 		prec = p.precision - (nb < 0 ? nb_len - 1 : nb_len);
-	if (p.hash && nb != 0 && ft_u_len_base(nb, 8) > p.precision)
+	if (p.hash && nb != 0 && nb_len >= p.precision)
 	{
 		if (p.zero == 0)
 			p.precision -= 1;

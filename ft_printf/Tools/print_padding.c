@@ -29,7 +29,7 @@ int	print_width(t_printf p, int written)
 				ft_putchar('0');
 				spaces_printed++;
 			}
-			else if (!p.zero || (ft_strchr("diuofFxX", p.conversion)
+			else if (!p.zero || (ft_strchr("diuoxX", p.conversion)
 			&& p.precision && p.zero))
 			{
 				ft_putchar(' ');

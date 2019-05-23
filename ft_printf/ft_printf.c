@@ -21,7 +21,7 @@ size_t	parse_format(va_list *arg, char *format)
 	{
 		if (*format == '%')
 			char_printed += parse_percentage(arg, &format);
-		else if (char_printed != -1)
+		else
 		{
 			ft_putchar(*format);
 			char_printed++;
