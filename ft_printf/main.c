@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 17:31:57 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/05/13 19:22:39 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/05/24 19:11:25 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,5 @@ void    show_binary(void *vptr, int count)
 	}
 }
 
+<<<<<<< HEAD
 */
