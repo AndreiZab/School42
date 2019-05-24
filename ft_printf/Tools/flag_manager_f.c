@@ -11,14 +11,13 @@
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-#include <stdint.h>
 
-static int			is_nan(long double nb)
+static int		is_nan(long double nb)
 {
 	return (!(nb == nb));
 }
 
-static int			is_inf(long double nb)
+static int		is_inf(long double nb)
 {
 	if (nb == (1.0 / 0.0) || nb == -(1.0 / 0.0))
 		return (1);
@@ -45,14 +44,12 @@ static void		*ft_memcpy(void *s1, const void *s2, size_t n)
 
 t_printf		flag_manager_f(long double nb, t_printf p)
 {
-	unsigned __int128 sign;
+	__int128	sign;
 
 	ft_memcpy(&sign, &nb, 8);
-	sign = sign & ((unsigned __int128)1 << 79);
+	sign = sign & ((__int128)1 << 79);
 	if (sign)
 		p.plus = -1;
-	p.inf = 0;
-	p.nan = 0;
 	if (!p.precision)
 		p.precision = 6;
 	if (is_nan(nb) || is_inf(nb))

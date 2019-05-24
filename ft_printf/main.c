@@ -6,14 +6,14 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 17:31:57 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/05/24 19:11:25 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/05/13 19:22:39 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 //#define ARG "|%#o|%#.o|%#o|%0o|%#.5o|%0.5o\"", 0U, 0U, 0U, 0U, 0U, 0U
-#define ARG "%f", 1101.112312312
+#define ARG "%f", -123.123
 
 int	main(void)
 {
@@ -79,5 +79,4 @@ void    show_binary(void *vptr, int count)
 	}
 }
 
-<<<<<<< HEAD
 */

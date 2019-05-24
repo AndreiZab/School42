@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-static void		print_f_longdouble(char *integer, char *decimal, t_printf p)
+static void	print_f_longdouble(char *integer, char *decimal, t_printf p)
 {
 	int i;
 
@@ -26,7 +26,7 @@ static void		print_f_longdouble(char *integer, char *decimal, t_printf p)
 		write(1, &decimal[i++], 1);
 }
 
-char			*integer_f(long double nb)
+char		*integer_f(long double nb)
 {
 	char		*s;
 	char		*ptr;
@@ -54,7 +54,7 @@ char			*integer_f(long double nb)
 	return (s);
 }
 
-char			*decimal_f(long double nb, t_printf p, char *integer_f)
+char		*decimal_f(long double nb, t_printf p, char *integer_f)
 {
 	char	*s;
 	int		i;
@@ -77,14 +77,14 @@ char			*decimal_f(long double nb, t_printf p, char *integer_f)
 	return (s);
 }
 
-int				write_f(t_printf p, char *integer, char *decimal, long double nb)
+int			write_f(t_printf p, char *integer, char *dec, long double nb)
 {
 	int len;
 	int char_printed;
 
 	char_printed = 0;
-	len = ft_strlen(integer) + ft_strlen(decimal) + 1;
-	if (decimal[0] == '\0' && !p.hash)
+	len = ft_strlen(integer) + ft_strlen(dec) + 1;
+	if (dec[0] == '\0' && !p.hash)
 		len--;
 	if ((p.plus || p.space) && nb >= 0)
 		char_printed += 1;
@@ -97,7 +97,7 @@ int				write_f(t_printf p, char *integer, char *decimal, long double nb)
 	if (p.plus < 0)
 		ft_putchar('-');
 	char_printed += print_zero_padding(p, char_printed);
-	print_f_longdouble(integer, decimal, p);
+	print_f_longdouble(integer, dec, p);
 	char_printed += print_width_minus(p, char_printed);
 	return (char_printed);
 }

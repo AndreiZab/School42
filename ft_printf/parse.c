@@ -31,6 +31,8 @@ static t_printf	filling_p(char *format, int i)
 	p.h = length(str, 'h');
 	p.j = length(str, 'j');
 	p.z = length(str, 'z');
+	p.inf = 0;
+	p.nan = 0;
 	free(str);
 	return (p);
 }

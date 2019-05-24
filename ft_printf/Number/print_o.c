@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-static int	print_u_o_longlong(int char_printed, t_printf p, unsigned long long nb)
+static int	print_u_o_long(int char_printed, t_printf p, unsigned long long nb)
 {
 	int prec;
 	int nb_len;
@@ -55,7 +55,7 @@ int			print_o_unsigned(va_list *arg, int char_printed, t_printf p)
 		u_nb = (unsigned long long)va_arg(*arg, uintmax_t);
 	else if (p.z == 1)
 		u_nb = (unsigned long long)va_arg(*arg, size_t);
-	char_printed += print_u_o_longlong(char_printed, p, u_nb);
+	char_printed += print_u_o_long(char_printed, p, u_nb);
 	return (char_printed);
 }
 

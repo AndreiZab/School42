@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-int	print_u_long(int char_printed, t_printf p, unsigned long long nb)
+int	print_u_l(int char_printed, t_printf p, unsigned long long nb)
 {
 	int	prec;
 	int	len;

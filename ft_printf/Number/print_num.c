@@ -75,7 +75,7 @@ static int	print_u(va_list *arg, int char_printed, t_printf p)
 			nb = (unsigned long long)va_arg(*arg, size_t);
 		else
 			nb = (unsigned long long)va_arg(*arg, unsigned int);
-		char_printed += print_u_long(char_printed, p, nb);
+		char_printed += print_u_l(char_printed, p, nb);
 	}
 	return (char_printed);
 }
@@ -98,7 +98,7 @@ static int	print_x(va_list *arg, int char_printed, t_printf p)
 		nb = (unsigned long long)va_arg(*arg, size_t);
 	else
 		nb = (unsigned long long)va_arg(*arg, unsigned int);
-	char_printed += print_x_long(char_printed, p, nb);
+	char_printed += print_x_l(char_printed, p, nb);
 	return (char_printed);
 }
 

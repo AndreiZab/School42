@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-static long double	ft_va_arg(va_list *arg, t_printf p)
+long double	ft_va_arg(va_list *arg, t_printf p)
 {
 	long double nb;
 
@@ -23,7 +23,7 @@ static long double	ft_va_arg(va_list *arg, t_printf p)
 	return (nb);
 }
 
-static int			ft_write_nan(t_printf p, char *s, char char_printed, long double nb)
+static int	ft_write_nan(t_printf p, char *s, char char_printed, long double nb)
 {
 	int len;
 
@@ -37,7 +37,7 @@ static int			ft_write_nan(t_printf p, char *s, char char_printed, long double nb
 	return (char_printed);
 }
 
-static int			ft_nun_inf(t_printf p, char char_printed, long double nb)
+static int	ft_nun_inf(t_printf p, char char_printed, long double nb)
 {
 	char *s;
 
@@ -49,7 +49,7 @@ static int			ft_nun_inf(t_printf p, char char_printed, long double nb)
 	return (char_printed);
 }
 
-int					print_f(va_list *arg, int char_printed, t_printf p)
+int			print_f(va_list *arg, int char_printed, t_printf p)
 {
 	char		*integer;
 	char		*decimal;
