@@ -6,13 +6,13 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 14:36:16 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/05/13 17:57:13 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/05/24 20:08:06 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static int		print_str_null(int char_printed, t_printf p)
+static int	print_str_null(int char_printed, t_printf p)
 {
 	int prec;
 
@@ -27,7 +27,7 @@ static int		print_str_null(int char_printed, t_printf p)
 	return (char_printed);
 }
 
-static int		print_string(int char_printed, t_printf p, char *str)
+static int	print_string(int char_printed, t_printf p, char *str)
 {
 	int	prec;
 
@@ -56,7 +56,7 @@ static int		print_string(int char_printed, t_printf p, char *str)
 	return (char_printed);
 }
 
-static int		print_char(int char_printed, t_printf p, char c)
+static int	print_char(int char_printed, t_printf p, char c)
 {
 	char_printed += 1;
 	char_printed += print_width(p, char_printed);
@@ -66,7 +66,7 @@ static int		print_char(int char_printed, t_printf p, char c)
 	return (char_printed);
 }
 
-int				print_simple_char(int char_printed, t_printf p)
+int			print_simple_char(int char_printed, t_printf p)
 {
 	char_printed += 1;
 	char_printed += print_width(p, char_printed);

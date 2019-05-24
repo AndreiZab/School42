@@ -32,6 +32,11 @@ static int	ft_write_nan(t_printf p, char *s, char char_printed, long double nb)
 	char_printed += print_width(p, char_printed);
 	if (nb == -(1.0 / 0.0))
 		ft_putchar('-');
+	if (p.plus == 1)
+	{
+		ft_putchar('+');
+		char_printed++;
+	}
 	ft_putstr(s);
 	char_printed += print_width_minus(p, char_printed);
 	return (char_printed);
