@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-t_printf	filling_p(char *format, int i)
+static t_printf	filling_p(char *format, int i)
 {
 	t_printf	p;
 	char		*str;
@@ -26,7 +26,7 @@ t_printf	filling_p(char *format, int i)
 	p.zero = zero_flag(str, p.minus);
 	p.hash = hash_flag(str);
 	p.space = space_flag(str, p.plus);
-	p.o = length(str, 'L');
+	p.bl = length(str, 'L');
 	p.l = length(str, 'l');
 	p.h = length(str, 'h');
 	p.j = length(str, 'j');
@@ -35,7 +35,7 @@ t_printf	filling_p(char *format, int i)
 	return (p);
 }
 
-char		*designation_p(char *format, t_printf *p)
+static char		*designation_p(char *format, t_printf *p)
 {
 	int	i;
 
@@ -48,7 +48,7 @@ char		*designation_p(char *format, t_printf *p)
 	return (&format[i]);
 }
 
-int			dispatch_conversion(va_list *arg, char **str, t_printf p)
+static int		dispatch_conversion(va_list *arg, char **str, t_printf p)
 {
 	int		char_printed;
 	int		i;
@@ -68,7 +68,7 @@ int			dispatch_conversion(va_list *arg, char **str, t_printf p)
 	return (char_printed);
 }
 
-int			parse_percentage(va_list *arg, char **format)
+int				parse_percentage(va_list *arg, char **format)
 {
 	int			i;
 	t_printf	p;

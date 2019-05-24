@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-void	ft_print_ptr(size_t nb)
+static void	ft_print_ptr(size_t nb)
 {
 	char *str;
 
@@ -26,7 +26,7 @@ void	ft_print_ptr(size_t nb)
 	}
 }
 
-int		print_ptr(int char_printed, va_list *arg, t_printf p)
+int			print_ptr(int char_printed, va_list *arg, t_printf p)
 {
 	void	*ptr;
 	int		p_len;

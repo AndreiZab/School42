@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-size_t	parse_format(va_list *arg, char *format)
+static size_t	parse_format(va_list *arg, char *format)
 {
 	size_t char_printed;
 
@@ -32,7 +32,7 @@ size_t	parse_format(va_list *arg, char *format)
 	return (char_printed);
 }
 
-int		ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	va_list	arg;
 	size_t	char_printed;

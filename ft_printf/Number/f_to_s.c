@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-void		print_f_longdouble(char *integer, char *decimal, t_printf p)
+static void		print_f_longdouble(char *integer, char *decimal, t_printf p)
 {
 	int i;
 
@@ -26,7 +26,7 @@ void		print_f_longdouble(char *integer, char *decimal, t_printf p)
 		write(1, &decimal[i++], 1);
 }
 
-char		*integer_f(long double nb)
+char			*integer_f(long double nb)
 {
 	char		*s;
 	char		*ptr;
@@ -38,11 +38,11 @@ char		*integer_f(long double nb)
 	if (!(s = (char*)ft_memalloc(len + 1)))
 		exit(1);
 	ptr = s;
-	while (len)
+	while (len > 0)
 	{
 		i = len - 1;
 		temp = nb;
-		while (i--)
+		while (i-- > 0)
 			temp /= 10;
 		*ptr++ = (int)temp + '0';
 		temp = (int)temp;
@@ -54,7 +54,7 @@ char		*integer_f(long double nb)
 	return (s);
 }
 
-char		*decimal_f(long double nb, t_printf p, char *integer_f)
+char			*decimal_f(long double nb, t_printf p, char *integer_f)
 {
 	char	*s;
 	int		i;
@@ -77,7 +77,7 @@ char		*decimal_f(long double nb, t_printf p, char *integer_f)
 	return (s);
 }
 
-int			write_f(t_printf p, char *integer, char *decimal, long double nb)
+int				write_f(t_printf p, char *integer, char *decimal, long double nb)
 {
 	int len;
 	int char_printed;

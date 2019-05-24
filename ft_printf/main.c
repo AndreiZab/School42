@@ -6,14 +6,14 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 17:31:57 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/05/23 20:02:33 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/05/13 19:22:39 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 //#define ARG "|%#o|%#.o|%#o|%0o|%#.5o|%0.5o\"", 0U, 0U, 0U, 0U, 0U, 0U
-#define ARG "%.20f", 1.18995
+#define ARG "%f", 1101.112312312
 
 int	main(void)
 {
@@ -23,10 +23,8 @@ int	main(void)
 	char s[10] = "Hello";
 
 	printf("Original:\n");
-	b = printf(ARG);
-	printf("\t\tres: %d\nMy:\n", b);
-	a = ft_printf(ARG);
-	printf("\t\tres: %d\n", a);
+	printf("\t\tres: %d\nMy:\n", printf(ARG));
+	printf("\t\tres: %d\n", ft_printf(ARG));
 	return (0);
 }
 
@@ -34,12 +32,13 @@ int	main(void)
 /*
 	  FAIL
 
-
 ??? Norme: ./ft_printf.h Error: global scope bad aligned
+Округление чисел кратным степени 2
 SURRENDER фейл округления у 20х знаков "%.20f", 1.025978542436587568678
-??? SURRENDER Решить проблему сравнения 0,0 и -0,0 без сравнения битовой маски(ну или с ней :D)
-??? В файлу принт_ф s = "inf" или поэлементно
 
+SOLVED В файлу принт_ф s = "inf" или поэлементно
+SOLVED Решить проблему сравнения 0,0 и -0,0 без сравнения битовой маски(ну или с ней :D)
+SOLVED Добавить определение знака по битам fuck yeah
 SOLVED "%07.1f", -7.3
 SOLVED Зеро педдинг сломался с - шириной и точностью (решить или пордом вызова функций или починкой печати ширины) "% 05.0f", -7.3
 SOLVED Не верное окргугление .0 ввиду того, что p.p = -1 "%.0f", 573.924
@@ -56,5 +55,28 @@ SURRENDER Добавить LL для d
 SOLVED Почему IDE влияет на поведение библеотечной функции? (проверь способ компиляции мб тут clang) printf("%LLd", n);
 SOLVED Краш где-то на дабл флаге + спецификатор printf("%#0.5lld", n);
 
+void    show_binary(void *vptr, int count)
+{
+	char    *ptr;
+	unsigned char    mask;
+
+	ptr = (char*)vptr;
+	ptr += count / 8 - 1;
+	while (count > 0)
+	{
+
+		mask = (1 << 7);
+		while (mask != 0 && count > 0)
+		{
+			if (*ptr & mask)
+				ft_putchar('1');
+			else
+				ft_putchar('0');
+			--count;
+			mask = mask >> 1;
+		}
+		--ptr;
+	}
+}
 
 */

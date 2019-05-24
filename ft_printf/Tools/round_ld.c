@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-long double	ft_pow(int pow)
+static long double	ft_pow(int pow)
 {
 	long double nb;
 
@@ -30,12 +30,12 @@ long double	ft_pow(int pow)
 	return (nb);
 }
 
-int			len_f(long double nb)
+int					len_f(long double nb)
 {
 	int	len;
 
 	len = 0;
-	while (nb > 1)
+	while (nb >= 1)
 	{
 		len++;
 		nb /= 10;
@@ -45,7 +45,7 @@ int			len_f(long double nb)
 	return (len);
 }
 
-long double	ft_atof(char *s)
+long double			ft_atof(char *s)
 {
 	long double nb;
 
@@ -59,7 +59,7 @@ long double	ft_atof(char *s)
 	return (nb);
 }
 
-int			ft_even(char *str)
+static int			ft_even(char *str)
 {
 	int i;
 
@@ -67,7 +67,7 @@ int			ft_even(char *str)
 	return (i);
 }
 
-long double	round_ld(long double nb, t_printf p)
+long double			round_ld(long double nb, t_printf p)
 {
 	long double	temp;
 	char		*integer_s;

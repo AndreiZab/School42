@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
-# include <limits.h>
+# include <limits.h> // del
 
 typedef struct	s_printf
 {
@@ -30,8 +30,8 @@ typedef struct	s_printf
 	int			hash;
 	int			space;
 	int			l;
-	int			o;
 	int			h;
+	int			bl;
 	int			j;
 	int			z;
 	int			inf;

@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-int	print_d(va_list *arg, int char_printed, t_printf p)
+static int	print_d(va_list *arg, int char_printed, t_printf p)
 {
 	char		c;
 	long long	nb;
@@ -39,7 +39,7 @@ int	print_d(va_list *arg, int char_printed, t_printf p)
 	return (char_printed);
 }
 
-int	print_o(va_list *arg, int char_printed, t_printf p)
+static int	print_o(va_list *arg, int char_printed, t_printf p)
 {
 	long long			nb;
 
@@ -53,7 +53,7 @@ int	print_o(va_list *arg, int char_printed, t_printf p)
 	return (char_printed);
 }
 
-int	print_u(va_list *arg, int char_printed, t_printf p)
+static int	print_u(va_list *arg, int char_printed, t_printf p)
 {
 	char				c;
 	unsigned long long	nb;
@@ -80,7 +80,7 @@ int	print_u(va_list *arg, int char_printed, t_printf p)
 	return (char_printed);
 }
 
-int	print_x(va_list *arg, int char_printed, t_printf p)
+static int	print_x(va_list *arg, int char_printed, t_printf p)
 {
 	unsigned long long	nb;
 
@@ -102,7 +102,7 @@ int	print_x(va_list *arg, int char_printed, t_printf p)
 	return (char_printed);
 }
 
-int	print_num(va_list *arg, t_printf p)
+int			print_num(va_list *arg, t_printf p)
 {
 	int				char_printed;
 	char			c;
