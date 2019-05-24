@@ -41,15 +41,11 @@ int			ft_nun_inf(t_printf p, char char_printed, long double nb)
 {
 	char *s;
 
-	if (!(s = (char*)malloc(sizeof(char) * 4)))
-		exit(1);
 	if (p.conversion == 'F')
 		s = p.inf ? "INF" : "NAN";
 	else
 		s = p.inf ? "inf" : "nan";
 	char_printed += ft_write_nan(p, s, char_printed, nb);
-	s = NULL;
-	free(s);
 	return (char_printed);
 }
 
@@ -67,9 +63,7 @@ int			print_f(va_list *arg, int char_printed, t_printf p)
 		integer = integer_f(nb);
 		decimal = decimal_f(nb, p, integer);
 		char_printed += write_f(p, integer, decimal, nb);
-		integer = NULL;
 		free(integer);
-		decimal = NULL;
 		free(decimal);
 	}
 	else
