@@ -29,9 +29,9 @@ static void	ft_print_ptr(size_t nb)
 int			print_ptr(int char_printed, va_list *arg, t_printf p)
 {
 	void	*ptr;
-	int		p_len;
 	int		prec;
-
+	int		p_len;
+	
 	prec = 0;
 	ptr = va_arg(*arg, void *);
 	p_len = ft_ptr_len_base((size_t)ptr, 16);
