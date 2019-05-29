@@ -14,8 +14,8 @@
 
 static int	print_d(va_list *arg, int char_printed, t_printf p)
 {
-	char		c;
 	long long	nb;
+	char		c;
 
 	c = p.conversion;
 	if (c == 'd' || c == 'i' || c == 'D')
