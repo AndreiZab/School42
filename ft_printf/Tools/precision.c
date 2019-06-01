@@ -15,8 +15,8 @@
 int	precision(char *str)
 {
 	int		i;
-	int		j;
 	char	tmp[ft_strlen(str)];
+	int		j;
 
 	i = 0;
 	j = 0;
