@@ -25,7 +25,7 @@ int			main(int argc, char **argv)
 		if (!sorted(stack))
 		{
 			if (stack->len_a > )//Сколько?
-				hard_sort(stack);//тяжелая сортировка
+				hard_sort(stack);
 			else
 				soft_sort(stack);
 		}
