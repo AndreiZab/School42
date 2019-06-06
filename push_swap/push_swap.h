@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/03 16:27:35 by rhealitt          #+#    #+#             */
+/*   Updated: 2019/06/04 15:40:04 by rhealitt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 
@@ -19,7 +30,25 @@ t_stack			*create_stack(int len);
 int				validation_str(char **str);
 int				sorted(t_stack *stack);
 t_stack			*parse_integers(int len, char **str);
+void			parse_instructions(t_stack *stack);
 t_stack			*parse_one_str(char *str);
+int				ft_median(int *array, int len);
+int				ft_duplicates(int *array, int len);
+int				compare(int a, int b, int c);
+void 			hard_sort(t_stack *stack, int max);
+void			soft_sort(t_stack *stack, int i);
+void			sort_2_element(t_stack *stack, char ar);
+void			sort_3_element(t_stack *stack, char s);
+void			do_swap(t_stack *stack, char s);
+void			ft_swap(int *x, int *y);
+void			quick_sort(int *list, int min, int max);
+void			gnl(t_stack *stack, char *line);
+int				*ft_reverce(int *ar, size_t n);
+void 			print_stack(t_stack *stack);
+int				split_a(t_stack *stack);
+int				split_b(t_stack *stack);
+void 			sort_b(t_stack *stack, int max);
+void			sort_3_elemnt(t_stack *stack, char s);
 
 void			do_ss(t_stack *stack, int print);
 void			do_sa(t_stack *stack, int print);

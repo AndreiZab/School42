@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 13:16:52 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/05/31 17:20:29 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/04 21:17:13 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void		*del_stack(t_stack *stack)
 {
-	//Сделать его войдовым? Или где-то будет stack = del_stack(stack)?
 	free(stack->a);
 	free(stack->b);
 	free(stack);
@@ -47,7 +46,7 @@ int			validation_str(char **str)
 	{
 		while (str[i][j])
 			if (str[i][j] > '9' || str[i][j++] < '0')
-			return (0);
+				return (0);
 		j = 0;
 		i++;
 	}
@@ -61,8 +60,8 @@ int			sorted(t_stack *stack)
 	if (!stack || stack->len_b)
 		return (0);
 	i = 0;
-	while (i++ < stack->len_a)
-		if (stack->a[i - 1] >= stack->a[i])
+	while (++i < stack->len_a)
+		if (stack->a[i - 1] < stack->a[i])
 			return (0);
 	return (1);
 }
