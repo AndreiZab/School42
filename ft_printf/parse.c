@@ -52,8 +52,8 @@ static char		*designation_p(char *format, t_printf *p)
 
 static int		dispatch_conversion(va_list *arg, char **str, t_printf p)
 {
-	int		char_printed;
 	int		i;
+	int		char_printed;
 
 	i = 0;
 	char_printed = 0;
