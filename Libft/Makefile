@@ -6,7 +6,7 @@
 #    By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/08 16:26:33 by rhealitt          #+#    #+#              #
-#    Updated: 2019/04/12 10:39:56 by rhealitt         ###   ########.fr        #
+#    Updated: 2019/04/13 19:07:53 by rhealitt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,8 @@ SRC = 		ft_memcmp.c		\
 			ft_is_prime.c	\
 			ft_factorial.c	\
 			ft_count_if.c	\
-			ft_countwords.c
+			ft_countwords.c	\
+			ft_free_2d_array.c
 
 HDR = libft.h
 

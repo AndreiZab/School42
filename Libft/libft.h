@@ -6,7 +6,7 @@
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:09:32 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/04/12 10:40:43 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/04/13 19:14:56 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,6 @@ int				ft_power(int nb, int power);
 int				ft_sqrt(int nb);
 int				ft_is_prime(int nb);
 int				ft_countwords(char const *str, char c);
+void			ft_free_2d_array(char **string);
 
 #endif
