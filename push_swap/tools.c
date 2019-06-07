@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 12:21:20 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/03 16:29:41 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/07 19:57:10 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		ft_duplicates(int *array, int len)
 	return (0);
 }
 
-int			*ft_reverce(int *ar, size_t n)
+int		*ft_reverce(int *ar, size_t n)
 {
 	int		tmp;
 	size_t	i;

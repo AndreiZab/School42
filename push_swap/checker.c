@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:14:22 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/05 20:57:11 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/07 15:08:15 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,6 @@ void		parse_instructions(t_stack *stack)
 	{
 		gnl(stack, line);
 		free(line);
-		//
-		break ;
-		//
 	}
 	if (sorted(stack))
 		write(1, "OK\n", 3);
@@ -58,55 +55,6 @@ void		parse_instructions(t_stack *stack)
 		write(1, "KO\n", 3);
 }
 
-t_stack		*parse_one_str(char *str)
-{
-	t_stack	*stack;
-	char	**temp;
-	int		i;
-
-	if (!(temp = ft_strsplit(str, ' ')))
-		return (0);
-	i = 0;
-	while (temp[i])
-		i++;
-	stack = create_stack(i);
-	i = -1;
-	while (temp[++i])
-	{
-		stack->a[i] = ft_atoi(temp[i]);
-		if (stack->a[i] == 0 && temp[i][0] != '0')
-		{
-			ft_free_2d_array(temp);
-			del_stack(stack);
-			return (0);
-		}
-	}
-	stack->a = ft_reverce(stack->a, stack->len_a);
-	ft_free_2d_array(temp);
-	return (stack);
-}
-
-t_stack		*parse_integers(int len, char **str)
-{
-	t_stack *tmp;
-	int		i;
-
-	if (len == 1)
-		return (parse_one_str(str[0]));
-	if (!(validation_str(str)))
-		return (0);
-	tmp = create_stack(len);
-	i = -1;
-	while (++i < len)
-	{
-		tmp->a[i] = ft_atoi(str[i]);
-		if (tmp->a[i] == 0 && str[i][0] != '0')
-			return (del_stack(tmp));
-	}
-	tmp->a = ft_reverce(tmp->a, tmp->len_a);
-	return (tmp);
-}
-/*
 int			main(int argc, char **argv)
 {
 	t_stack	*stack;
@@ -126,4 +74,3 @@ int			main(int argc, char **argv)
 	}
 	return (0);
 }
-*/

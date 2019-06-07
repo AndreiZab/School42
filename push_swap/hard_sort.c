@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 12:11:25 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/06 15:09:27 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/07 19:57:10 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		split_b(t_stack *stack)
 	return (push);
 }
 
-void 	sort_b(t_stack *stack, int max)
+void	sort_b(t_stack *stack, int max)
 {
 	int push_in_a;
 	int	*tmp_a;
@@ -84,7 +84,7 @@ void 	sort_b(t_stack *stack, int max)
 		sort_3_element(stack, 'b');
 }
 
-void 	hard_sort(t_stack *stack, int max)
+void	hard_sort(t_stack *stack, int max)
 {
 	int push_in_b;
 	int	*tmp_b;
@@ -110,14 +110,17 @@ void 	hard_sort(t_stack *stack, int max)
 		sort_3_element(stack, 'a');
 }
 
-void	soft_sort(t_stack *stack, int i) {
+void	soft_sort(t_stack *stack, int i)
+{
 	int m;
 	int push;
 
 	push = 0;
-	if (stack->len_a > 3) {
+	if (stack->len_a > 3)
+	{
 		m = ft_median(stack->a, stack->len_a);
-		while (--i >= 0) {
+		while (--i >= 0)
+		{
 			if (stack->a[stack->len_a - 1] < m && ++push)
 				do_pb(stack, 1);
 			else if (stack->a[stack->len_a - 1] >= m)

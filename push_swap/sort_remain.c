@@ -59,8 +59,6 @@ void		sort_3_element(t_stack *stack, char s)
 {
 	int cmp;
 
-	if (!stack)
-		return ;
 	if (s == 'a')
 	{
 		cmp = compare(stack->a[stack->len_a - 1], stack->a[stack->len_a - 2],
@@ -89,8 +87,6 @@ void		sort_3_elemnt(t_stack *stack, char s)
 {
 	int cmp;
 
-	if (!stack)
-		return ;
 	cmp = compare(stack->a[stack->len_a - 1], stack->a[stack->len_a - 2],
 			stack->a[stack->len_a - 3]);
 	if (s == 'b')

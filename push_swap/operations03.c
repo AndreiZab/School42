@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 11:23:17 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/04 20:38:25 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/07 19:58:54 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,25 @@ void	do_rrr(t_stack *stack, int print)
 	stack->b[i - 1] = tmp;
 	if (print)
 		write(1, "rrr\n", 4);
+}
+
+t_stack	*parse_integers(int len, char **str)
+{
+	t_stack	*tmp;
+	int		i;
+
+	if (!(validation_str(str)))
+		return (0);
+	if (len == 1)
+		return (parse_one_str(str[0]));
+	tmp = create_stack(len);
+	i = -1;
+	while (++i < len)
+	{
+		tmp->a[i] = ft_atoi(str[i]);
+		if (tmp->a[i] == 0 && str[i][0] != '0')
+			return (del_stack(tmp));
+	}
+	tmp->a = ft_reverce(tmp->a, tmp->len_a);
+	return (tmp);
 }

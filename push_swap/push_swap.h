@@ -15,7 +15,8 @@
 # define PUSH_SWAP_H
 # include <unistd.h>
 # include <stdlib.h>
-# include "get_next_line/get_next_line.h"
+# include "libft/get_next_line.h"
+# include "libft/libft.h"
 
 typedef struct	s_stack
 {
@@ -35,7 +36,7 @@ t_stack			*parse_one_str(char *str);
 int				ft_median(int *array, int len);
 int				ft_duplicates(int *array, int len);
 int				compare(int a, int b, int c);
-void 			hard_sort(t_stack *stack, int max);
+void			hard_sort(t_stack *stack, int max);
 void			soft_sort(t_stack *stack, int i);
 void			sort_2_element(t_stack *stack, char ar);
 void			sort_3_element(t_stack *stack, char s);
@@ -44,10 +45,10 @@ void			ft_swap(int *x, int *y);
 void			quick_sort(int *list, int min, int max);
 void			gnl(t_stack *stack, char *line);
 int				*ft_reverce(int *ar, size_t n);
-void 			print_stack(t_stack *stack);
+void			print_stack(t_stack *stack);
 int				split_a(t_stack *stack);
 int				split_b(t_stack *stack);
-void 			sort_b(t_stack *stack, int max);
+void			sort_b(t_stack *stack, int max);
 void			sort_3_elemnt(t_stack *stack, char s);
 
 void			do_ss(t_stack *stack, int print);

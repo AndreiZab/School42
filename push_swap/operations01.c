@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 11:23:20 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/04 20:28:38 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/07 19:57:17 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	do_ss(t_stack *stack, int print)
 
 void	do_pa(t_stack *stack, int print)
 {
-
 	if (!stack || stack->len_b < 1)
 		return ;
 	stack->a[stack->len_a] = stack->b[stack->len_b - 1];
@@ -75,7 +74,6 @@ void	do_pa(t_stack *stack, int print)
 
 void	do_pb(t_stack *stack, int print)
 {
-
 	if (!stack || stack->len_a < 1)
 		return ;
 	stack->b[stack->len_b] = stack->a[stack->len_a - 1];

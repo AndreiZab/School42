@@ -46,7 +46,6 @@ void	do_rb(t_stack *stack, int print)
 
 void	do_rr(t_stack *stack, int print)
 {
-
 	int i;
 	int tmp;
 

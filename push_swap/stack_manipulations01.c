@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 13:16:52 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/04 21:17:13 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/07 18:28:40 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,18 @@ int			validation_str(char **str)
 	while (str[i])
 	{
 		while (str[i][j])
-			if (str[i][j] > '9' || str[i][j++] < '0')
+		{
+			if ((str[i][j] == '-' || str[i][j] == '+') &&
+				str[i][j + 1] <= '9' && str[i][j + 1] >= '0')
+			{
+				if ((j > 1 && str[i][j - 1] == ' ') || j == 0)
+					j++;
+				else
+					return (0);
+			}
+			else if (str[i][j] > '9' || str[i][j++] < '0')
 				return (0);
+		}
 		j = 0;
 		i++;
 	}
@@ -64,4 +74,32 @@ int			sorted(t_stack *stack)
 		if (stack->a[i - 1] < stack->a[i])
 			return (0);
 	return (1);
+}
+
+t_stack		*parse_one_str(char *str)
+{
+	t_stack	*stack;
+	char	**temp;
+	int		i;
+
+	if (!(temp = ft_strsplit(str, ' ')))
+		return (0);
+	i = 0;
+	while (temp[i])
+		i++;
+	stack = create_stack(i);
+	i = -1;
+	while (temp[++i])
+	{
+		stack->a[i] = ft_atoi(temp[i]);
+		if (stack->a[i] == 0 && temp[i][0] != '0')
+		{
+			ft_free_2d_array(temp);
+			del_stack(stack);
+			return (0);
+		}
+	}
+	stack->a = ft_reverce(stack->a, stack->len_a);
+	ft_free_2d_array(temp);
+	return (stack);
 }
