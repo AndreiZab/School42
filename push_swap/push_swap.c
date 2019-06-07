@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 15:35:25 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/07 19:57:17 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/07 20:00:41 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int			main(int argc, char **argv)
 	argv++;
 	if (argc > 1 && argv && *argv)
 	{
-
 		if (!(stack = parse_integers(argc - 1, argv)))
 			return (write(2, "Error\n", 6));
 		else if (ft_duplicates(stack->a, stack->len_a))

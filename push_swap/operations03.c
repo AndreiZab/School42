@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 11:23:17 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/07 19:58:54 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/07 21:06:08 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_stack	*parse_integers(int len, char **str)
 	t_stack	*tmp;
 	int		i;
 
-	if (!(validation_str(str)))
+	if (!(validation_str(str, len)))
 		return (0);
 	if (len == 1)
 		return (parse_one_str(str[0]));

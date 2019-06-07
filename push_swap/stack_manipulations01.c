@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 13:16:52 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/07 18:28:40 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/07 21:03:48 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,20 @@ t_stack		*create_stack(int len)
 	return (temp);
 }
 
-int			validation_str(char **str)
+int			validation_str(char **str, int len)
 {
 	int i;
 	int j;
 
-	i = 0;
+	i = -1;
 	j = 0;
-	while (str[i])
+	while (str[++i])
 	{
 		while (str[i][j])
 		{
-			if ((str[i][j] == '-' || str[i][j] == '+') &&
+			if (str[i][j] == ' ' && len == 1)
+				j++;
+			else if ((str[i][j] == '-' || str[i][j] == '+') &&
 				str[i][j + 1] <= '9' && str[i][j + 1] >= '0')
 			{
 				if ((j > 1 && str[i][j - 1] == ' ') || j == 0)
@@ -58,7 +60,6 @@ int			validation_str(char **str)
 				return (0);
 		}
 		j = 0;
-		i++;
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 16:27:35 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/04 15:40:04 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/07 19:53:15 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct	s_stack
 
 void			*del_stack(t_stack *stack);
 t_stack			*create_stack(int len);
-int				validation_str(char **str);
+int				validation_str(char **str, int len);
 int				sorted(t_stack *stack);
 t_stack			*parse_integers(int len, char **str);
 void			parse_instructions(t_stack *stack);
