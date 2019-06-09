@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_2d_array.c                                 :+:      :+:    :+:   */
+/*   ft_u_len_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/13 18:33:18 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/08 16:36:50 by rhealitt         ###   ########.fr       */
+/*   Created: 2019/05/07 16:25:07 by rhealitt          #+#    #+#             */
+/*   Updated: 2019/05/07 16:26:07 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-int		ft_free_2d_array(char **string)
+size_t	ft_u_len_base(unsigned long long int nb, char base)
 {
-	int i;
+	size_t len;
 
-	if (string == NULL)
-		return (0);
-	i = 0;
-	while (string[i])
+	len = 1;
+	while (nb >= (unsigned long long)base)
 	{
-		free(string[i]);
-		string[i] = NULL;
-		i++;
+		nb = nb / base;
+		len++;
 	}
-	free(string);
-	string = NULL;
-	return (0);
+	return (len);
 }

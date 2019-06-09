@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:14:22 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/07 20:56:15 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/09 19:30:36 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,21 @@ int			main(int argc, char **argv)
 {
 	t_stack	*stack;
 
-	argv++;
-	if (argc > 1 && argv && *argv)
+	if (argc > 1 && ++argv && *argv)
 	{
-		if (!(stack = parse_integers(argc - 1, argv)))
+		if (argv[0][0] == '-' && argv[0][1] == 'v')
+		{
+			if (argv[0][2] == '\0')
+				argv++;
+			else
+				*argv = *argv + 3;
+			if (argc > 2)
+				argc--;
+		}
+		if (!(stack = parse_integers(argc - 1, argv, 0)))
 			return (write(2, "Error\n", 6));
 		if (ft_duplicates(stack->a, stack->len_a))
-		{
-			del_stack(stack);
-			return (write(2, "Error\n", 6));
-		}
+			return (del_stack(stack) + write(2, "Error\n", 6));
 		parse_instructions(stack);
 		del_stack(stack);
 	}

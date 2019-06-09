@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_2d_array.c                                 :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/13 18:33:18 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/08 16:36:50 by rhealitt         ###   ########.fr       */
+/*   Created: 2019/05/07 12:22:54 by rhealitt          #+#    #+#             */
+/*   Updated: 2019/05/07 12:55:37 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-int		ft_free_2d_array(char **string)
+char	*ft_strchr(const char *s, int c)
 {
-	int i;
+	char	char_c;
 
-	if (string == NULL)
-		return (0);
-	i = 0;
-	while (string[i])
+	char_c = (char)c;
+	while (*s)
 	{
-		free(string[i]);
-		string[i] = NULL;
-		i++;
+		if (*s == char_c)
+			return ((char*)s);
+		++s;
 	}
-	free(string);
-	string = NULL;
-	return (0);
+	if (c == '\0')
+		return ((char*)s);
+	return (NULL);
 }

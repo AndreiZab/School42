@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_2d_array.c                                 :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/13 18:33:18 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/08 16:36:50 by rhealitt         ###   ########.fr       */
+/*   Created: 2019/05/07 12:50:10 by rhealitt          #+#    #+#             */
+/*   Updated: 2019/05/07 12:51:28 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-int		ft_free_2d_array(char **string)
+char	*ft_strndup(const char *str, size_t n)
 {
-	int i;
+	char	*dest;
 
-	if (string == NULL)
-		return (0);
-	i = 0;
-	while (string[i])
+	dest = ft_strnew(n);
+	if (dest)
 	{
-		free(string[i]);
-		string[i] = NULL;
-		i++;
+		dest = ft_strncpy(dest, str, n);
+		return (dest);
 	}
-	free(string);
-	string = NULL;
-	return (0);
+	else
+		return (NULL);
 }

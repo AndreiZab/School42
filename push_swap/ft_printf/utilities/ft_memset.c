@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_2d_array.c                                 :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/13 18:33:18 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/08 16:36:50 by rhealitt         ###   ########.fr       */
+/*   Created: 2019/04/06 17:00:28 by rhealitt          #+#    #+#             */
+/*   Updated: 2019/05/07 13:08:19 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-int		ft_free_2d_array(char **string)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	int i;
+	size_t i;
 
-	if (string == NULL)
-		return (0);
 	i = 0;
-	while (string[i])
+	while (i < len)
 	{
-		free(string[i]);
-		string[i] = NULL;
+		((char *)b)[i] = (unsigned char)c;
 		i++;
 	}
-	free(string);
-	string = NULL;
-	return (0);
+	return (b);
 }

@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_2d_array.c                                 :+:      :+:    :+:   */
+/*   ft_putnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/13 18:33:18 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/08 16:36:50 by rhealitt         ###   ########.fr       */
+/*   Created: 2019/05/07 13:47:57 by rhealitt          #+#    #+#             */
+/*   Updated: 2019/05/07 13:56:15 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-int		ft_free_2d_array(char **string)
+void	ft_putnstr(const char *str, size_t n)
 {
-	int i;
+	size_t	len;
 
-	if (string == NULL)
-		return (0);
-	i = 0;
-	while (string[i])
+	if (str != NULL)
 	{
-		free(string[i]);
-		string[i] = NULL;
-		i++;
+		len = ft_strlen(str);
+		if (len < n)
+			write(1, str, len);
+		else
+			write(1, str, n);
 	}
-	free(string);
-	string = NULL;
-	return (0);
 }

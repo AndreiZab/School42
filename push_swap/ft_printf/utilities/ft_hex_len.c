@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_2d_array.c                                 :+:      :+:    :+:   */
+/*   ft_hex_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/13 18:33:18 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/08 16:36:50 by rhealitt         ###   ########.fr       */
+/*   Created: 2019/05/07 16:46:59 by rhealitt          #+#    #+#             */
+/*   Updated: 2019/05/07 16:52:52 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
+#include <limits.h>
 
-int		ft_free_2d_array(char **string)
+int	ft_hex_len(unsigned long long nb)
 {
-	int i;
+	int char_printed;
 
-	if (string == NULL)
-		return (0);
-	i = 0;
-	while (string[i])
-	{
-		free(string[i]);
-		string[i] = NULL;
-		i++;
-	}
-	free(string);
-	string = NULL;
-	return (0);
+	if (nb < 16)
+		char_printed = 1;
+	else
+		char_printed = ft_u_len_base(nb, 16);
+	return (char_printed);
 }

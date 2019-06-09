@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 11:23:20 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/07 19:22:48 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/09 18:50:26 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	do_sa(t_stack *stack, int print)
 	temp = stack->a[i];
 	stack->a[i] = stack->a[i - 1];
 	stack->a[i - 1] = temp;
-	if (print)
+	if (print && stack->v)
+		print_v(stack, "sa");
+	else if (print)
 		write(1, "sa\n", 3);
 }
 
@@ -38,7 +40,9 @@ void	do_sb(t_stack *stack, int print)
 	temp = stack->b[i];
 	stack->b[i] = stack->b[i - 1];
 	stack->b[i - 1] = temp;
-	if (print)
+	if (print && stack->v)
+		print_v(stack, "sb");
+	else if (print)
 		write(1, "sb\n", 3);
 }
 
@@ -57,7 +61,9 @@ void	do_ss(t_stack *stack, int print)
 	temp = stack->a[i];
 	stack->a[i] = stack->a[i - 1];
 	stack->a[i - 1] = temp;
-	if (print)
+	if (print && stack->v)
+		print_v(stack, "ss");
+	else if (print)
 		write(1, "ss\n", 3);
 }
 
@@ -68,7 +74,9 @@ void	do_pa(t_stack *stack, int print)
 	stack->a[stack->len_a] = stack->b[stack->len_b - 1];
 	stack->len_a++;
 	stack->len_b--;
-	if (print)
+	if (print && stack->v)
+		print_v(stack, "pa");
+	else if (print)
 		write(1, "pa\n", 3);
 }
 
@@ -79,6 +87,8 @@ void	do_pb(t_stack *stack, int print)
 	stack->b[stack->len_b] = stack->a[stack->len_a - 1];
 	stack->len_b++;
 	stack->len_a--;
-	if (print)
+	if (print && stack->v)
+		print_v(stack, "pb");
+	else if (print)
 		write(1, "pb\n", 3);
 }

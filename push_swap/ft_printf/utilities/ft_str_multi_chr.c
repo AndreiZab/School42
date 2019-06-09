@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_2d_array.c                                 :+:      :+:    :+:   */
+/*   ft_str_multi_chr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/13 18:33:18 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/08 16:36:50 by rhealitt         ###   ########.fr       */
+/*   Created: 2019/05/07 16:28:18 by rhealitt          #+#    #+#             */
+/*   Updated: 2019/05/08 18:38:17 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-int		ft_free_2d_array(char **string)
+char	*ft_str_multi_chr(char *str, char *c)
 {
-	int i;
+	int	i;
+	int j;
 
-	if (string == NULL)
-		return (0);
 	i = 0;
-	while (string[i])
+	while (str[i])
 	{
-		free(string[i]);
-		string[i] = NULL;
+		j = 0;
+		while (c[j])
+		{
+			if (str[i] == c[j])
+				return (&str[i]);
+			j++;
+		}
 		i++;
 	}
-	free(string);
-	string = NULL;
-	return (0);
+	return (NULL);
 }

@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_2d_array.c                                 :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/13 18:33:18 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/08 16:36:50 by rhealitt         ###   ########.fr       */
+/*   Created: 2019/04/07 18:31:34 by rhealitt          #+#    #+#             */
+/*   Updated: 2019/05/07 12:55:37 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-int		ft_free_2d_array(char **string)
+char	*ft_strnew(size_t size)
 {
-	int i;
+	char *s;
+	char *p;
 
-	if (string == NULL)
-		return (0);
-	i = 0;
-	while (string[i])
+	if (size + 1 == 0)
+		return (NULL);
+	s = (char *)malloc(sizeof(char) * size + 1);
+	if (s == NULL)
+		return (NULL);
+	p = s;
+	while (size)
 	{
-		free(string[i]);
-		string[i] = NULL;
-		i++;
+		*p++ = '\0';
+		size--;
 	}
-	free(string);
-	string = NULL;
-	return (0);
+	*p = '\0';
+	return (s);
 }

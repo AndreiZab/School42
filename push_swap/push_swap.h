@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 16:27:35 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/07 19:53:15 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/09 19:10:31 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define PUSH_SWAP_H
 # include <unistd.h>
 # include <stdlib.h>
+# include "ft_printf/ft_printf.h"
 # include "libft/get_next_line.h"
 # include "libft/libft.h"
 
@@ -24,15 +25,17 @@ typedef struct	s_stack
 	int			*b;
 	int			len_a;
 	int			len_b;
+	int			v;
 }				t_stack;
 
-void			*del_stack(t_stack *stack);
+int				del_stack(t_stack *stack);
 t_stack			*create_stack(int len);
+void			print_v(t_stack *stack, char *str);
 int				validation_str(char **str, int len);
 int				sorted(t_stack *stack);
-t_stack			*parse_integers(int len, char **str);
+t_stack			*parse_integers(int len, char **str, int v);
 void			parse_instructions(t_stack *stack);
-t_stack			*parse_one_str(char *str);
+t_stack			*parse_one_str(char *str, int v);
 int				ft_median(int *array, int len);
 int				ft_duplicates(int *array, int len);
 int				compare(int a, int b, int c);

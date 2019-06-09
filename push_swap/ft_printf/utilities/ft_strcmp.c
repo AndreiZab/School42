@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_2d_array.c                                 :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/13 18:33:18 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/08 16:36:50 by rhealitt         ###   ########.fr       */
+/*   Created: 2019/04/05 10:39:37 by rhealitt          #+#    #+#             */
+/*   Updated: 2019/05/07 12:58:07 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-int		ft_free_2d_array(char **string)
+int		ft_strcmp(const char *s1, const char *s2)
 {
 	int i;
 
-	if (string == NULL)
-		return (0);
 	i = 0;
-	while (string[i])
-	{
-		free(string[i]);
-		string[i] = NULL;
+	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
 		i++;
-	}
-	free(string);
-	string = NULL;
-	return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
