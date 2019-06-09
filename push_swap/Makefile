@@ -6,7 +6,7 @@
 #    By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 15:32:40 by rhealitt          #+#    #+#              #
-#    Updated: 2019/06/09 19:29:39 by rhealitt         ###   ########.fr        #
+#    Updated: 2019/06/09 19:36:21 by rhealitt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ LOG_GREEN = \033[32m
 
 all: $(NAME1) $(NAME2)
 
-$(NAME1): $(OBJS) $(ALIB)
+$(NAME1): $(OBJS)
 	@echo "$(LOG_GREEN) - Compiling ... $(LOG_NOCOLOR)"
 	@make -C $(PRIF) re
 	@make -C $(LIBF) re
@@ -46,7 +46,7 @@ $(NAME2): $(OBJS) $(ALIB)
 	@echo "$(LOG_GREEN)Checker created successfully$(LOG_NOCOLOR)"
 
 %.o: %.c libft/libft.h push_swap.h ft_printf/ft_printf.h
-	gcc -Wall -Wextra -Werror -c $<
+	@gcc -Wall -Wextra -Werror -c $<
 
 clean:
 	@make -C $(LIBF) clean
