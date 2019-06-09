@@ -14,9 +14,9 @@
 
 int		ft_atoi(const char *str)
 {
+	char	sign;
 	int		i;
 	long	numb;
-	char	sign;
 	char	was_sign;
 
 	i = 0;
