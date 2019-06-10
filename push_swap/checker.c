@@ -59,8 +59,10 @@ int			main(int argc, char **argv)
 {
 	t_stack *stack;
 
-	if (argc > 1 && ++argv && *argv) {
-		if (argv[0][0] == '-' && argv[0][1] == 'v') {
+	if (argc > 1 && ++argv && *argv)
+	{
+		if (argv[0][0] == '-' && argv[0][1] == 'v')
+		{
 			if (argv[0][2] == '\0')
 				argv++;
 			else
