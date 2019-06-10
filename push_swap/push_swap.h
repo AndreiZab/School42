@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 16:27:35 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/10 13:24:49 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/10 14:13:22 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
-#define LYELLOW	"\x1b[93m"
-#define NO_C	"\x1b[0m"
+# define LYELLOW "\x1b[93m"
+# define NO_C "\x1b[0m"
 
 typedef struct	s_stack
 {

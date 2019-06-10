@@ -6,10 +6,9 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 11:23:17 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/10 13:32:35 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/10 14:15:15 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -94,7 +93,7 @@ t_stack	*parse_integers(int len, char **str, int v)
 	return (tmp);
 }
 
-void		print_v(t_stack *stack, char *str)
+void	print_v(t_stack *stack, char *str)
 {
 	int i;
 	int tmp_la;
