@@ -6,7 +6,7 @@
 #    By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/08 16:26:33 by rhealitt          #+#    #+#              #
-#    Updated: 2019/06/09 19:07:49 by rhealitt         ###   ########.fr        #
+#    Updated: 2019/06/10 13:25:46 by rhealitt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,10 +84,13 @@ OFL = $(SRC:.c=.o)
 
 FLGS = -Wall -Wextra -Werror
 
-$(NAME):
+$(NAME): $(OFL)
 	@gcc $(FLGS) -c $(SRC)
 	@ar rc $(NAME) $(OFL)
 	@ranlib $(NAME)
+
+%.o: %.c libft.h
+	@gcc -Wall -Wextra -Werror -c $<
 
 all: $(NAME)
 

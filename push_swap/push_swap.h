@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 16:27:35 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/09 19:10:31 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/10 13:24:49 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 # define PUSH_SWAP_H
 # include <unistd.h>
 # include <stdlib.h>
-# include "ft_printf/ft_printf.h"
 # include "libft/get_next_line.h"
 # include "libft/libft.h"
+# include "ft_printf/ft_printf.h"
+
+#define LYELLOW	"\x1b[93m"
+#define NO_C	"\x1b[0m"
 
 typedef struct	s_stack
 {
@@ -48,7 +51,6 @@ void			ft_swap(int *x, int *y);
 void			quick_sort(int *list, int min, int max);
 void			gnl(t_stack *stack, char *line);
 int				*ft_reverce(int *ar, size_t n);
-void			print_stack(t_stack *stack);
 int				split_a(t_stack *stack);
 int				split_b(t_stack *stack);
 void			sort_b(t_stack *stack, int max);

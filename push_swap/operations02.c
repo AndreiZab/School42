@@ -6,11 +6,14 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 11:23:24 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/09 18:50:26 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/10 13:24:49 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+#define GREEN "\x1b[32m"
+#define NO_C "\x1b[0m"
 
 void	do_ra(t_stack *stack, int print)
 {

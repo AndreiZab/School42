@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 11:23:17 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/09 18:45:46 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/10 13:32:35 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,15 +103,15 @@ void		print_v(t_stack *stack, char *str)
 	tmp_la = stack->len_a;
 	tmp_lb = stack->len_b;
 	i = (stack->len_a > stack->len_b) ? stack->len_a : stack->len_b;
-	printf("\nExec: %s\n", str);
+	ft_printf("\nExec:"LYELLOW" %s\n"NO_C, str);
 	while (--i >= 0)
 	{
-		system("sleep 0.01");
+		system("sleep 0.5");
 		if (tmp_lb >= 1 && tmp_la >= 1)
-			printf("%-4d|%3d\n", stack->a[--tmp_la], stack->b[--tmp_lb]);
+			ft_printf("%-4d|%3d\n", stack->a[--tmp_la], stack->b[--tmp_lb]);
 		else if (tmp_lb < 1)
-			printf("%-4d|%3c\n", stack->a[--tmp_la], ' ');
+			ft_printf("%-4d|%3c\n", stack->a[--tmp_la], ' ');
 		else if (tmp_la < 1)
-			printf("%-4c|%3d\n", ' ', stack->b[--tmp_lb]);
+			ft_printf("%-4c|%3d\n", ' ', stack->b[--tmp_lb]);
 	}
 }

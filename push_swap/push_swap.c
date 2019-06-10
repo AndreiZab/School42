@@ -6,30 +6,11 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 15:35:25 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/09 18:47:29 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/10 13:24:49 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void		print_stack(t_stack *stack)
-{
-	int i;
-
-	i = 0;
-	while (i < stack->len_a)
-	{
-		printf("%d\n", stack->a[i]);
-		i++;
-	}
-	printf("---\n");
-	i = 0;
-	while (i < stack->len_b)
-	{
-		printf("%d\n", stack->b[i]);
-		i++;
-	}
-}
 
 int			main(int argc, char **argv)
 {
