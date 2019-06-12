@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:14:22 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/10 12:56:21 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/12 14:13:41 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,8 @@ int			main(int argc, char **argv)
 {
 	t_stack *stack;
 
-	if (argc > 1 && ++argv && *argv)
-	{
-		if (argv[0][0] == '-' && argv[0][1] == 'v')
+	if (argc > 1 && ++argv && *argv) {
+		if (argv[0][0] == '-' && argv[0][1] == 'v') 
 		{
 			if (argv[0][2] == '\0')
 				argv++;
@@ -79,3 +78,4 @@ int			main(int argc, char **argv)
 	}
 	return (0);
 }
+

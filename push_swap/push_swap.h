@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 16:27:35 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/10 14:13:22 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/10 12:42:50 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
-# define LYELLOW "\x1b[93m"
-# define NO_C "\x1b[0m"
+#define LYELLOW	"\x1b[93m"
+#define NO_C	"\x1b[0m"
 
 typedef struct	s_stack
 {
@@ -43,7 +43,7 @@ int				ft_median(int *array, int len);
 int				ft_duplicates(int *array, int len);
 int				compare(int a, int b, int c);
 void			hard_sort(t_stack *stack, int max);
-void			soft_sort(t_stack *stack, int i);
+void			soft_sort(t_stack *stack);
 void			sort_2_element(t_stack *stack, char ar);
 void			sort_3_element(t_stack *stack, char s);
 void			do_swap(t_stack *stack, char s);
@@ -53,7 +53,7 @@ void			gnl(t_stack *stack, char *line);
 int				*ft_reverce(int *ar, size_t n);
 int				split_a(t_stack *stack);
 int				split_b(t_stack *stack);
-void			sort_b(t_stack *stack, int max);
+void			over_sort(t_stack *stack, int max);
 void			sort_3_elemnt(t_stack *stack, char s);
 
 void			do_ss(t_stack *stack, int print);
