@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 12:11:25 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/12 14:21:50 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/12 15:34:08 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	over_sort(t_stack *stack, int max)
 	int	*tmp_a;
 	int	tmp_len;
 
-
 	if (max > 3)
 	{
 		push_in_a = split_b(stack);
@@ -84,7 +83,6 @@ void	over_sort(t_stack *stack, int max)
 	else if (max == 3)
 		sort_3_element(stack, 'b');
 }
-
 
 void	hard_sort(t_stack *stack, int max)
 {

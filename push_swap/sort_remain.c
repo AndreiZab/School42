@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 15:32:34 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/06/12 11:50:31 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/06/12 15:31:40 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void		sort_3_element(t_stack *stack, char s)
 
 	if (s == 'a')
 	{
-		cmp = compare(stack->a[stack->len_a - 1], stack->a[stack->len_a - 2],
-					  stack->a[stack->len_a - 3]);
+		cmp = compare(stack->a[stack->len_a - 1], stack->a[stack->len_a - 2]
+				, stack->a[stack->len_a - 3]);
 		if (cmp == 0 || cmp == 3 || cmp == 1)
 			do_sa(stack, 1);
 		if (cmp == 0 || cmp == 2 || cmp == 1 || cmp == 4)
@@ -57,7 +57,7 @@ void		sort_3_element(t_stack *stack, char s)
 	if (s == 'b')
 	{
 		cmp = compare(stack->b[stack->len_b - 1], stack->b[stack->len_b - 2],
-					  stack->b[stack->len_b - 3]);
+				stack->b[stack->len_b - 3]);
 		if (cmp == 5 || cmp == 6 || cmp == 2)
 			do_sb(stack, 1);
 		if (cmp == 5 || cmp == 6 || cmp == 3 || cmp == 1)

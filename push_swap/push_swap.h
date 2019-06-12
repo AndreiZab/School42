@@ -19,8 +19,8 @@
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
-#define LYELLOW	"\x1b[93m"
-#define NO_C	"\x1b[0m"
+# define LYELLOW "\x1b[93m"
+# define NO_C "\x1b[0m"
 
 typedef struct	s_stack
 {
