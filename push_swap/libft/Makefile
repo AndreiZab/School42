@@ -89,9 +89,6 @@ $(NAME): $(OFL)
 	@ar rc $(NAME) $(OFL)
 	@ranlib $(NAME)
 
-%.o: %.c libft.h
-	@gcc -Wall -Wextra -Werror -c $<
-
 all: $(NAME)
 
 clean:
