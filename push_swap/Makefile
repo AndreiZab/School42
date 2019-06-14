@@ -6,7 +6,7 @@
 #    By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 15:32:40 by rhealitt          #+#    #+#              #
-#    Updated: 2019/06/09 19:36:21 by rhealitt         ###   ########.fr        #
+#    Updated: 2019/06/14 11:05:47 by rhealitt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,9 @@ $(NAME2): $(OBJS) $(ALIB)
 	@echo "$(LOG_GREEN)Checker created successfully$(LOG_NOCOLOR)"
 
 %.o: %.c libft/libft.h push_swap.h ft_printf/ft_printf.h
+	@gcc -Wall -Wextra -Werror -c $<
+
+libft/%.o: libft/%.c libft/libft.h
 	@gcc -Wall -Wextra -Werror -c $<
 
 clean:

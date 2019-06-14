@@ -6,7 +6,7 @@
 #    By: rhealitt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/07 18:40:55 by rhealitt          #+#    #+#              #
-#    Updated: 2019/05/23 19:54:13 by rhealitt         ###   ########.fr        #
+#    Updated: 2019/06/14 10:42:33 by rhealitt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ CCFL = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(SRCS) 
-	@gcc $(CCFL) -I ./ -c $(SRCS) 
+	@gcc $(CCFL) -I ./ -c $(SRCS)
 	@ar rc $(NAME) $(OBJS)
 	 
 %.o: %.c ft_printf.h
