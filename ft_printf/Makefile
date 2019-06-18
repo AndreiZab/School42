@@ -50,7 +50,10 @@ all: $(NAME)
 $(NAME): $(SRCS) 
 	@gcc $(CCFL) -I ./ -c $(SRCS) 
 	@ar rc $(NAME) $(OBJS)
-	 
+	
+%.o: %.c ft_printf.h
+	@gcc -Wall -Wextra -Werror -c $<
+	
 clean:
 	@rm -f $(OBJS)
 
