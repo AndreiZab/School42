@@ -32,7 +32,7 @@ LOG_RED = \033[1;31m
 LOG_NOCOLOR	= \033[0m
 LOG_GREEN = \033[32m
 
-all: $(NAME1) $(NAME2)
+all: $(NAME2) $(NAME1)
 
 $(NAME1): $(OBJS)
 	@echo "$(LOG_GREEN) - Compiling ... $(LOG_NOCOLOR)"
