@@ -80,13 +80,13 @@ SRC = 		ft_memcmp.c		\
 			ft_free_2d_array.c \
 			get_next_line.c
 
-OFL = $(SRC:.c=.o)
+OBJ = $(SRC:.c=.o)
 
 FLGS = -Wall -Wextra -Werror
 
-$(NAME): $(OFL)
+$(NAME): $(OBJ)
 	@gcc $(FLGS) -c $(SRC)
-	@ar rc $(NAME) $(OFL)
+	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
 %.o: %.c libft.h
@@ -95,7 +95,7 @@ $(NAME): $(OFL)
 all: $(NAME)
 
 clean:
-	@rm -f $(OFL)
+	@rm -f $(OBJ)
 
 fclean: clean
 	@rm -f $(NAME)
