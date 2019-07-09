@@ -16,9 +16,6 @@ NAME2 = push_swap
 LIBF = libft
 PRIF = ft_printf
 
-#LIBC = -I ./$(LIBF) -L $(LIBF) -lft
-#PRIC = -I ./$(PRIF) -L $(PRIF) -libftprintf
-
 ALIB = libft/libft.a ft_printf/libftprintf.a
 
 
