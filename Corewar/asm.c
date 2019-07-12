@@ -6,7 +6,7 @@
 /*   By: rhealitt <rhealitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 13:54:16 by rhealitt          #+#    #+#             */
-/*   Updated: 2019/07/12 12:54:23 by rhealitt         ###   ########.fr       */
+/*   Updated: 2019/07/12 15:33:49 by rhealitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ int		main(int argc, char **argv)
 		return (0);
 	}
 	else if (argc > 2)
-		write(1, "TOO_MANY_FILES\n", 15);
+		write(2, "TOO_MANY_FILES\n", 15);
 	else if (argc < 2)
-		write(1, "NO_INPUT_FILE\n", 15);
+		write(2, "NO_INPUT_FILE\n", 14);
 	else if (err)
-		write(1, "WRONG_FILE_TYPE,_NEED_.s_FILE\n", 29);
-	write(1, "Usage: ./asm champ.s\n", 21);
+		write(2, "WRONG_FILE_TYPE,_NEED_.s_FILE\n", 29);
+	write(2, "Usage: ./asm champ.s\n", 21);
 	return(0);
 }
