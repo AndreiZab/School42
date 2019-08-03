@@ -60,7 +60,7 @@ int				get_next_line(const int fd, char **line)
 {
 	ssize_t		result;
 	char		*temp;
-	static char *save[256];
+	static char *save[1024];
 
 	if (!line || fd < 0 || (read(fd, save[0], 0) < 0) ||
 			((temp = ft_memalloc(BUFF_SIZE + 1)) == NULL))
