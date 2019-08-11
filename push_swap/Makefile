@@ -26,7 +26,7 @@ OBJS = $(SRCS:.c=.o) checker.o push_swap.o
 
 CCFL = -Wall -Wextra -Werror
 LOG_RED = \033[1;31m
-LOG_NOCOLOR	= \033[0m
+LOG_NOCOLOR = \033[0m
 LOG_GREEN = \033[32m
 
 all: $(NAME2) $(NAME1)
