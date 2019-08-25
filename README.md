@@ -1,11 +1,11 @@
 # Проекты в School42
 
-*Libft
+* Libft
 
-*Push_swap
+* Push_swap
 
-*Get_next_line
+* Get_next_line
 
-*printf
+* printf
 
-*Fillit
+* Fillit
