@@ -62,5 +62,3 @@ fclean: clean
 	@/bin/rm -f $(NAME2)
 
 re: fclean all
-
-.PHONY: all clean fclean re
